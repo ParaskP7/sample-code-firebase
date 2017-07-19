@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources>
+
+    <string name="app_name">Firebase</string>
+
+    <string name="action_settings">Settings</string>
+
+    <string name="hello_firebase">Hello Firebase!</string>
+
+    <string name="snackbar_firebase_text">Snackbar action a la Firebase…</string>
+    <string name="snackbar_firebase_action">Action</string>
+
+</resources>
