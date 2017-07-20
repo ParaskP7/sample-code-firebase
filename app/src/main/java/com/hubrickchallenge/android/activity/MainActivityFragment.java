@@ -10,9 +10,6 @@ import com.hubrickchallenge.android.R;
 
 public class MainActivityFragment extends Fragment {
 
-    public MainActivityFragment() {
-    }
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {

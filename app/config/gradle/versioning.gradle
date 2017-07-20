@@ -12,6 +12,7 @@ ext.versions = [
 
         // Quality Plugins
         findbugsPlugin  : '3.0.1',
+        pmdPlugin       : '5.8.1',
 
         // Build
         minSdk          : 15,

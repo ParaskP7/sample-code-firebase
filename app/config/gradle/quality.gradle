@@ -15,7 +15,7 @@ android { // Lint checks. See https://developer.android.com/studio/write/lint.ht
 
 // FINDBUGS *****************************************************************************************************************
 
-apply plugin: 'findbugs' // Findbugs plugin details: http://findbugs.sourceforge.net/
+apply plugin: 'findbugs' // Findbugs plugin details: http://findbugs.sourceforge.net
 
 findbugs {
     effort 'max'
@@ -35,4 +35,28 @@ task findBugs(type: FindBugs) {
     source = ['src/main/java/', 'src/test/java/']
     classes = files("$project.buildDir/intermediates/classes")
     classpath = files()
+}
+
+
+// PMD **********************************************************************************************************************
+
+
+apply plugin: 'pmd' // Pmd plugin details: https://docs.gradle.org/current/userguide/pmd_plugin.html
+
+pmd {
+    consoleOutput true
+    ignoreFailures false
+    rulePriority 5 // Strictest mode available
+    ruleSetConfig resources.text.fromFile("$rootProject.projectDir/app/config/static_analysis/pmd/pmd_rules.xml")
+    toolVersion versions.pmdPlugin
+    tasks.withType(Pmd) {
+        reports {
+            xml.enabled true
+            html.enabled true
+        }
+    }
+}
+
+task pmd(type: Pmd) {
+    source = ['src/main/java/', 'src/test/java/']
 }
