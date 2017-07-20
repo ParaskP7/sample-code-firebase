@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<lint>
+
+    <!--The google_crash_reporting_api_key is not used (yet) so it is being ignored.-->
+    <issue id="UnusedResources">
+        <ignore path="build/generated/res/google-services/debug/values/values.xml" />
+        <ignore path="build/generated/res/google-services/release/values/values.xml" />
+    </issue>
+
+</lint>
