@@ -1,4 +1,3 @@
-
 apply plugin: 'com.android.application'
 apply plugin: 'com.github.ben-manes.versions'
 
@@ -46,6 +45,7 @@ dependencies {
     compile deps.support.constraintLayout
     compile deps.support.design
     compile deps.firebase.database
+    compile deps.other.findbugs
 
     testCompile deps.test.junit
 

@@ -1,6 +1,6 @@
+ext.app = [
 
-ext.app = [ // Manifest app version information!
-
+        // Manifest app version information!
         major: 1,
         minor: 0,
         patch: 0,
@@ -10,24 +10,30 @@ ext.app = [ // Manifest app version information!
 
 ext.versions = [
 
+        // Quality Plugins
+        findbugsPlugin  : '3.0.1',
+
         // Build
-        minSdk              : 15,
-        targetSdk           : 26,
-        compileSdk          : 26,
-        buildTools          : '26.0.0',
+        minSdk          : 15,
+        targetSdk       : 26,
+        compileSdk      : 26,
+        buildTools      : '26.0.0',
 
         // Android
-        supportLibrary      : '26.0.0-alpha1',
-        constraintLayout    : '1.0.2',
+        supportLibrary  : '26.0.0-alpha1',
+        constraintLayout: '1.0.2',
 
         // Firebase
-        firebaseDatabase    : '11.0.2',
+        firebaseDatabase: '11.0.2',
+
+        // Other
+        findbugs        : '2.0.1',
 
         // Test
-        junit               : '4.12',
+        junit           : '4.12',
 
         // Android Test
-        espresso            : '2.2.2',
+        espresso        : '2.2.2',
 
 ]
 
@@ -39,6 +45,9 @@ ext.deps = [
         ],
         'firebase'   : [
                 'database': "com.google.firebase:firebase-database:${versions.firebaseDatabase}",
+        ],
+        'other'      : [
+                'findbugs': "com.google.code.findbugs:annotations:${versions.findbugs}",
         ],
         'test'       : [
                 'junit': "junit:junit:${versions.junit}",

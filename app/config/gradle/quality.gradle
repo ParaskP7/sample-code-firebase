@@ -1,4 +1,3 @@
-
 // LINT *********************************************************************************************************************
 
 android { // Lint checks. See https://developer.android.com/studio/write/lint.html
@@ -12,4 +11,28 @@ android { // Lint checks. See https://developer.android.com/studio/write/lint.ht
         htmlReport true
         xmlReport true
     }
+}
+
+// FINDBUGS *****************************************************************************************************************
+
+apply plugin: 'findbugs' // Findbugs plugin details: http://findbugs.sourceforge.net/
+
+findbugs {
+    effort 'max'
+    ignoreFailures false
+    excludeFilter file("$rootProject.projectDir/app/config/static_analysis/findbugs/findbugs-exclusions.xml")
+    reportLevel 'low'
+    toolVersion versions.findbugsPlugin
+    tasks.withType(FindBugs) {
+        reports {
+            xml.enabled true
+            html.enabled false
+        }
+    }
+}
+
+task findBugs(type: FindBugs) {
+    source = ['src/main/java/', 'src/test/java/']
+    classes = files("$project.buildDir/intermediates/classes")
+    classpath = files()
 }
