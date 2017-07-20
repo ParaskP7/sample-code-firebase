@@ -1,0 +1,53 @@
+
+ext.app = [ // Manifest app version information!
+
+        major: 1,
+        minor: 0,
+        patch: 0,
+        build: 0, // bump for dogfood builds, public betas, etc.
+
+]
+
+ext.versions = [
+
+        // Plugins
+        androidPlugin       : '2.3.3',
+        googleServicesPlugin: '3.0.0',
+
+        // Build
+        minSdk              : 15,
+        targetSdk           : 26,
+        compileSdk          : 26,
+        buildTools          : '26.0.0',
+
+        // Android
+        supportLibrary      : '26.0.0-alpha1',
+        constraintLayout    : '1.0.2',
+
+        // Firebase
+        firebaseDatabase    : '11.0.2',
+
+        // Test
+        junit               : '4.12',
+
+        // Android Test
+        espresso            : '2.2.2',
+
+]
+
+ext.deps = [
+        'support'    : [
+                'appCompat'       : "com.android.support:appcompat-v7:${versions.supportLibrary}",
+                'constraintLayout': "com.android.support.constraint:constraint-layout:${versions.constraintLayout}",
+                'design'          : "com.android.support:design:${versions.supportLibrary}",
+        ],
+        'firebase'   : [
+                'database': "com.google.firebase:firebase-database:${versions.firebaseDatabase}",
+        ],
+        'test'       : [
+                'junit': "junit:junit:${versions.junit}",
+        ],
+        'androidTest': [
+                'espresso': "com.android.support.test.espresso:espresso-core:${versions.espresso}",
+        ],
+]

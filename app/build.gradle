@@ -3,15 +3,15 @@ apply plugin: 'com.android.application'
 
 android {
 
-    compileSdkVersion 26
-    buildToolsVersion "26.0.0"
+    compileSdkVersion versions.compileSdk
+    buildToolsVersion versions.buildTools
 
     defaultConfig {
         applicationId "com.hubrickchallenge.android"
-        minSdkVersion 15
-        targetSdkVersion 26
-        versionCode 1
-        versionName "1.0"
+        minSdkVersion versions.minSdk
+        targetSdkVersion versions.targetSdk
+        versionCode app.major * 10000 + app.minor * 1000 + app.patch * 100 + app.build
+        versionName "${app.major}.${app.minor}.${app.patch}"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
 
@@ -26,16 +26,14 @@ android {
 
 dependencies {
 
-    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile deps.support.appCompat
+    compile deps.support.constraintLayout
+    compile deps.support.design
+    compile deps.firebase.database
 
-    compile 'com.android.support:appcompat-v7:26.0.0-alpha1'
-    compile 'com.android.support.constraint:constraint-layout:1.0.2'
-    compile 'com.android.support:design:26.0.0-alpha1'
-    compile 'com.google.firebase:firebase-database:11.0.2'
+    testCompile deps.test.junit
 
-    testCompile 'junit:junit:4.12'
-
-    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+    androidTestCompile(deps.androidTest.espresso, {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
 

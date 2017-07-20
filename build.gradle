@@ -1,8 +1,14 @@
 
+apply from: 'app/config/gradle/versioning.gradle'
+
 buildscript {
 
     repositories {
+        mavenCentral()
         jcenter()
+        maven {
+            url 'https://plugins.gradle.org/m2'
+        }
     }
 
     dependencies {
@@ -15,11 +21,11 @@ buildscript {
 allprojects {
 
     repositories {
+        mavenCentral()
         jcenter()
+        maven {
+            url 'https://plugins.gradle.org/m2'
+        }
     }
 
-}
-
-task clean(type: Delete) {
-    delete rootProject.buildDir
 }
