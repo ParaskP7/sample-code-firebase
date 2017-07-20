@@ -60,3 +60,26 @@ pmd {
 task pmd(type: Pmd) {
     source = ['src/main/java/', 'src/test/java/']
 }
+
+// CHECKSTYLE ***************************************************************************************************************
+
+apply plugin: 'checkstyle' // Checkstyle plugin details: http://checkstyle.sourceforge.net/
+
+checkstyle {
+    config resources.text.fromFile("$rootProject.projectDir/app/config/static_analysis/checkstyle/checkstyle_rules.xml")
+    ignoreFailures false
+    configProperties = ["checkstyle.suppressions.file": "$rootProject.projectDir/app/config/static_analysis/checkstyle/checkstyle_suppression_filter.xml"]
+    showViolations true
+    toolVersion versions.checkstylePlugin
+    tasks.withType(Checkstyle) {
+        reports {
+            xml.enabled true
+            html.enabled true
+        }
+    }
+}
+
+task checkstyle(type: Checkstyle) {
+    source = ['src/main/java/', 'src/test/java/']
+    classpath = files()
+}
