@@ -2,6 +2,8 @@
 apply plugin: 'com.android.application'
 apply plugin: 'com.github.ben-manes.versions'
 
+apply from: 'config/gradle/quality.gradle'
+
 dependencyUpdates.resolutionStrategy = {
     componentSelection { rules ->
         rules.all { ComponentSelection selection ->
