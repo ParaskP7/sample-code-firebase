@@ -26,6 +26,9 @@ ext.versions = [
         supportLibrary  : '26.0.0-alpha1',
         constraintLayout: '1.0.2',
 
+        // Important
+        dagger          : '2.11',
+
         // Firebase
         firebaseDatabase: '11.0.2',
 
@@ -48,6 +51,10 @@ ext.deps = [
         ],
         'firebase'   : [
                 'database': "com.google.firebase:firebase-database:${versions.firebaseDatabase}",
+        ],
+        'dagger'     : [
+                'runtime' : "com.google.dagger:dagger:${versions.dagger}",
+                'compiler': "com.google.dagger:dagger-compiler:${versions.dagger}",
         ],
         'other'      : [
                 'findbugs': "com.google.code.findbugs:annotations:${versions.findbugs}",

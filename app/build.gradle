@@ -46,6 +46,8 @@ dependencies {
     compile deps.support.constraintLayout
     compile deps.support.design
     compile deps.firebase.database
+    compile deps.dagger.runtime
+    annotationProcessor deps.dagger.compiler
     compile(deps.other.findbugs, {
         exclude group: 'net.jcip', module: 'jcip-annotations'
         exclude group: 'com.google.code.findbugs', module: 'jsr305'
