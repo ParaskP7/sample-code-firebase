@@ -27,7 +27,7 @@ ext.versions = [
         firebaseDatabase: '11.0.2',
 
         // Other
-        findbugs        : '2.0.1',
+        findbugs        : '3.0.1',
 
         // Test
         junit           : '4.12',
