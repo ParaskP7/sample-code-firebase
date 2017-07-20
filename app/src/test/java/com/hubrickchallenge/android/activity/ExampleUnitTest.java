@@ -1,4 +1,4 @@
-package io.petros.firebase.activity;
+package com.hubrickchallenge.android.activity;
 
 import org.junit.Test;
 

@@ -1,4 +1,4 @@
-package io.petros.firebase.activity;
+package com.hubrickchallenge.android.activity;
 
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -9,7 +9,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
-import io.petros.firebase.R;
+import com.hubrickchallenge.android.R;
 
 public class MainActivity extends AppCompatActivity {
 

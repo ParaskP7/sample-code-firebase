@@ -1,4 +1,4 @@
-package io.petros.firebase.activity;
+package com.hubrickchallenge.android.activity;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
@@ -16,7 +16,7 @@ public class ExampleInstrumentedTest {
     public void useAppContext() {
         Context appContext = InstrumentationRegistry.getTargetContext();
 
-        assertEquals("io.petros.firebase", appContext.getPackageName());
+        assertEquals("com.hubrickchallenge.android", appContext.getPackageName());
     }
 
 }
