@@ -10,10 +10,6 @@ ext.app = [ // Manifest app version information!
 
 ext.versions = [
 
-        // Plugins
-        androidPlugin       : '2.3.3',
-        googleServicesPlugin: '3.0.0',
-
         // Build
         minSdk              : 15,
         targetSdk           : 26,
