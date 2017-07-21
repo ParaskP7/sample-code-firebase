@@ -2,7 +2,7 @@
 
 <FindBugsFilter>
 
-    <!--Exclude classes // ********************************************************************************************** -->
+    <!--Exclude classes // ************************************************************************************************************* -->
 
     <Match>
         <!--exclude android generated class-->
@@ -39,7 +39,7 @@
         <Class name="~.*\.*RealmProxy*.*"/>
     </Match>
 
-    <!--Exclude bugs see http://findbugs.sourceforge.net/bugDescriptions.html ******************************************* -->
+    <!--Exclude bugs see http://findbugs.sourceforge.net/bugDescriptions.html ********************************************************** -->
 
     <Match>
         <!--Rule disabled - We are not going to fill the code with clones. We reckon we are okay for now.-->

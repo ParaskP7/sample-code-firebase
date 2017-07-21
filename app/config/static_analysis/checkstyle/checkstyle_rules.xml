@@ -422,7 +422,7 @@ while most of them run under the 'TreeWalker' module.-->
         <!--<module name="ExecutableStatementCount"/>-->
 
         <module name="LineLength">
-            <property name="max" value="160"/>
+            <property name="max" value="140"/>
         </module>
 
         <module name="MethodCount"/>

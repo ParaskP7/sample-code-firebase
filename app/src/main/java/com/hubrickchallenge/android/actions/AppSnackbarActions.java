@@ -23,7 +23,7 @@ public class AppSnackbarActions implements SnackbarActions {
     }
 
     @Override
-    public void setCoordinatorLayout(CoordinatorLayout coordinatorLayout) {
+    public void setCoordinatorLayout(@Nullable CoordinatorLayout coordinatorLayout) {
         this.coordinatorLayout = coordinatorLayout;
     }
 

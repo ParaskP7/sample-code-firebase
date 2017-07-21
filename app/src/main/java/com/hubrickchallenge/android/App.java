@@ -27,7 +27,7 @@ public class App extends Application {
         applicationComponent.inject(this);
     }
 
-    // ACTIONS // ***********************************************************************************************************
+    // ACTIONS // **************************************************************************************************************************
 
     public SnackbarActions snackbar() {
         return appSnackbarActions;

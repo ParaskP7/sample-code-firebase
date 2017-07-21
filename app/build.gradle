@@ -48,6 +48,8 @@ dependencies {
     compile deps.firebase.database
     compile deps.dagger.runtime
     annotationProcessor deps.dagger.compiler
+    compile deps.butterKnife.runtime
+    annotationProcessor deps.butterKnife.compiler
     compile(deps.other.findbugs, {
         exclude group: 'net.jcip', module: 'jcip-annotations'
         exclude group: 'com.google.code.findbugs', module: 'jsr305'

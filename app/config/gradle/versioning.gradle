@@ -28,6 +28,7 @@ ext.versions = [
 
         // Important
         dagger          : '2.11',
+        butterKnife     : '8.7.0',
 
         // Firebase
         firebaseDatabase: '11.0.2',
@@ -55,6 +56,10 @@ ext.deps = [
         'dagger'     : [
                 'runtime' : "com.google.dagger:dagger:${versions.dagger}",
                 'compiler': "com.google.dagger:dagger-compiler:${versions.dagger}",
+        ],
+        'butterKnife'     : [
+                'runtime' : "com.jakewharton:butterknife:$versions.butterKnife",
+                'compiler': "com.jakewharton:butterknife-compiler:$versions.butterKnife",
         ],
         'other'      : [
                 'findbugs': "com.google.code.findbugs:annotations:${versions.findbugs}",
