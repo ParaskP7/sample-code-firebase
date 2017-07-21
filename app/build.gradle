@@ -50,6 +50,7 @@ dependencies {
     annotationProcessor deps.dagger.compiler
     compile deps.butterKnife.runtime
     annotationProcessor deps.butterKnife.compiler
+    compile deps.logging.timber
     compile(deps.other.findbugs, {
         exclude group: 'net.jcip', module: 'jcip-annotations'
         exclude group: 'com.google.code.findbugs', module: 'jsr305'

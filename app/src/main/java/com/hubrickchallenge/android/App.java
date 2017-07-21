@@ -10,6 +10,8 @@ import com.hubrickchallenge.android.tools.dagger.modules.ApplicationModule;
 
 import javax.inject.Inject;
 
+import timber.log.Timber;
+
 public class App extends Application {
 
     private static ApplicationComponent applicationComponent;
@@ -23,7 +25,13 @@ public class App extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
+        initTimber();
         initDagger();
+        Timber.i("Firebase application created!");
+    }
+
+    private void initTimber() {
+        Timber.plant(new Timber.DebugTree());
     }
 
     private void initDagger() {

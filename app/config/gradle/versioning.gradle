@@ -33,6 +33,9 @@ ext.versions = [
         // Firebase
         firebaseDatabase: '11.0.2',
 
+        // Logging
+        timber          : '4.5.1',
+
         // Other
         findbugs        : '3.0.1',
 
@@ -57,9 +60,12 @@ ext.deps = [
                 'runtime' : "com.google.dagger:dagger:${versions.dagger}",
                 'compiler': "com.google.dagger:dagger-compiler:${versions.dagger}",
         ],
-        'butterKnife'     : [
+        'butterKnife': [
                 'runtime' : "com.jakewharton:butterknife:$versions.butterKnife",
                 'compiler': "com.jakewharton:butterknife-compiler:$versions.butterKnife",
+        ],
+        'logging'    : [
+                'timber': "com.jakewharton.timber:timber:$versions.timber",
         ],
         'other'      : [
                 'findbugs': "com.google.code.findbugs:annotations:${versions.findbugs}",

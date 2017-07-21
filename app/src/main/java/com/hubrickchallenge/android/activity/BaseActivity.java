@@ -1,6 +1,7 @@
 package com.hubrickchallenge.android.activity;
 
 import android.os.Bundle;
+import android.support.annotation.CallSuper;
 import android.support.annotation.Nullable;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.v7.app.AppCompatActivity;
@@ -15,6 +16,7 @@ import javax.inject.Inject;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import timber.log.Timber;
 
 public abstract class BaseActivity extends AppCompatActivity {
 
@@ -22,6 +24,8 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     @BindView(R.id.toolbar) Toolbar toolbar;
     @BindView(R.id.coordinator_layout) CoordinatorLayout coordinatorLayout;
+
+    // LIFECYCLE // ************************************************************************************************************************
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -31,6 +35,7 @@ public abstract class BaseActivity extends AppCompatActivity {
         setButterKnife();
         setToolbar();
         setSnackbar();
+        Timber.d("%s created.", getClass().getSimpleName());
     }
 
     protected abstract int getLayoutId();
@@ -51,6 +56,45 @@ public abstract class BaseActivity extends AppCompatActivity {
     private void setSnackbar() {
         application.snackbar().setCoordinatorLayout(coordinatorLayout);
     }
+
+    @Override
+    public void onRestart() {
+        super.onRestart();
+        Timber.d("%s restarted.", getClass().getSimpleName());
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        Timber.d("%s started.", getClass().getSimpleName());
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Timber.d("%s resumed.", getClass().getSimpleName());
+    }
+
+    @Override
+    @CallSuper
+    protected void onPause() {
+        Timber.d("%s paused.", getClass().getSimpleName());
+        super.onPause();
+    }
+
+    @Override
+    protected void onStop() {
+        Timber.d("%s stopped.", getClass().getSimpleName());
+        super.onStop();
+    }
+
+    @Override
+    protected void onDestroy() {
+        Timber.d("%s destroyed.", getClass().getSimpleName());
+        super.onDestroy();
+    }
+
+    // ACTIONS // **************************************************************************************************************************
 
     protected SnackbarActions snackbar() {
         return application.snackbar();
