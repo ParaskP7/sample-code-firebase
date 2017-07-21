@@ -12,6 +12,12 @@ import javax.inject.Inject;
 
 public class App extends Application {
 
+    private static ApplicationComponent applicationComponent;
+
+    public static ApplicationComponent getApplicationComponent() {
+        return applicationComponent;
+    }
+
     @Inject AppSnackbarActions appSnackbarActions;
 
     @Override
@@ -21,7 +27,7 @@ public class App extends Application {
     }
 
     private void initDagger() {
-        ApplicationComponent applicationComponent = DaggerApplicationComponent.builder()
+        applicationComponent = DaggerApplicationComponent.builder()
                 .applicationModule(new ApplicationModule(this))
                 .build();
         applicationComponent.inject(this);

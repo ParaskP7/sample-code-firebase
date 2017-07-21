@@ -9,11 +9,16 @@ import android.support.v7.widget.Toolbar;
 import com.hubrickchallenge.android.App;
 import com.hubrickchallenge.android.R;
 import com.hubrickchallenge.android.actions.SnackbarActions;
+import com.hubrickchallenge.android.tools.dagger.components.ApplicationComponent;
+
+import javax.inject.Inject;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public abstract class BaseActivity extends AppCompatActivity {
+
+    @Inject App application;
 
     @BindView(R.id.toolbar) Toolbar toolbar;
     @BindView(R.id.coordinator_layout) CoordinatorLayout coordinatorLayout;
@@ -22,12 +27,18 @@ public abstract class BaseActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(getLayoutId());
+        setDagger();
         setButterKnife();
         setToolbar();
         setSnackbar();
     }
 
     protected abstract int getLayoutId();
+
+    private void setDagger() {
+        ApplicationComponent applicationComponent = App.getApplicationComponent();
+        applicationComponent.inject(this);
+    }
 
     private void setButterKnife() {
         ButterKnife.bind(this);
@@ -38,11 +49,11 @@ public abstract class BaseActivity extends AppCompatActivity {
     }
 
     private void setSnackbar() {
-        ((App) getApplication()).snackbar().setCoordinatorLayout(coordinatorLayout);
+        application.snackbar().setCoordinatorLayout(coordinatorLayout);
     }
 
     protected SnackbarActions snackbar() {
-        return ((App) getApplication()).snackbar();
+        return application.snackbar();
     }
 
 }

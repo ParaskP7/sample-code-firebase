@@ -1,6 +1,7 @@
 package com.hubrickchallenge.android.tools.dagger.components;
 
 import com.hubrickchallenge.android.App;
+import com.hubrickchallenge.android.activity.BaseActivity;
 import com.hubrickchallenge.android.tools.dagger.modules.ApplicationModule;
 
 import javax.inject.Singleton;
@@ -12,5 +13,7 @@ import dagger.Component;
 public interface ApplicationComponent {
 
     void inject(App application);
+
+    void inject(BaseActivity baseActivity);
 
 }

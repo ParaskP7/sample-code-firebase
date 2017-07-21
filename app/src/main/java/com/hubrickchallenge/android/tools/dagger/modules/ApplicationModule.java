@@ -16,6 +16,11 @@ public class ApplicationModule {
     }
 
     @Provides
+    App providesApplication() {
+        return application;
+    }
+
+    @Provides
     AppSnackbarActions providesAppSnackbarActions() {
         return new AppSnackbarActions(application);
     }
