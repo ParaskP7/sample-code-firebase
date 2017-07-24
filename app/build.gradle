@@ -45,6 +45,9 @@ dependencies {
     compile deps.support.appCompat
     compile deps.support.constraintLayout
     compile deps.support.design
+    compile deps.mosby.mvp
+    compile deps.mosby.viewState
+    compile deps.mosby.mvpNullObjectPresenter
     compile deps.firebase.database
     compile deps.dagger.runtime
     annotationProcessor deps.dagger.compiler
