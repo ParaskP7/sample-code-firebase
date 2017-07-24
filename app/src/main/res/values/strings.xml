@@ -6,8 +6,6 @@
 
     <string name="action_settings">Settings</string>
 
-    <string name="hello_firebase">Hello Firebase!</string>
-
     <string name="snackbar_firebase_text">Snackbar action a la Firebase…</string>
     <string name="snackbar_firebase_default_action_text">OK</string>
 

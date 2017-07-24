@@ -1,19 +1,22 @@
 package com.hubrickchallenge.android.activity.main;
 
-import android.widget.TextView;
+import android.os.Bundle;
+import android.support.v7.widget.RecyclerView;
+import android.view.View;
 
 import com.hubrickchallenge.android.R;
 import com.hubrickchallenge.android.activity.BaseFragment;
 import com.hubrickchallenge.android.activity.main.presenter.MainFragmentPresenter;
+import com.hubrickchallenge.android.activity.main.view.FeedItemAdapter;
 import com.hubrickchallenge.android.activity.main.view.MainFragmentView;
 import com.hubrickchallenge.android.activity.main.view.MainFragmentViewState;
 import com.hubrickchallenge.android.tools.dagger.components.ComponentFactory;
 import com.hubrickchallenge.android.tools.dagger.components.MainFragmentComponent;
 
-import butterknife.BindString;
+import javax.annotation.Nullable;
+import javax.inject.Inject;
+
 import butterknife.BindView;
-import butterknife.OnClick;
-import timber.log.Timber;
 
 public class MainFragment extends BaseFragment<
         MainFragmentComponent,
@@ -22,8 +25,9 @@ public class MainFragment extends BaseFragment<
         MainFragmentViewState>
         implements MainFragmentView {
 
-    @BindString(R.string.hello_firebase) String helloFirebase;
-    @BindView(R.id.textView) TextView textView;
+    @Inject FeedItemAdapter feedItemAdapter;
+
+    @BindView(R.id.recyclerView) RecyclerView recyclerView;
 
     @Override
     protected int getLayoutId() {
@@ -35,16 +39,14 @@ public class MainFragment extends BaseFragment<
         return ComponentFactory.getMainFragmentComponent();
     }
 
-    @OnClick(R.id.button)
-    void onButtonClick() {
-        getPresenter().getHelloFirebase(textView.getText().toString(), helloFirebase);
+    @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        setRecyclerView();
     }
 
-    @Override
-    public void displayHelloFirebase(String helloFirebase) {
-        Timber.i("Displaying hello firebase: %s", helloFirebase);
-        getViewState().saveHelloFirebase(helloFirebase);
-        textView.setText(helloFirebase);
+    private void setRecyclerView() {
+        recyclerView.setAdapter(feedItemAdapter);
     }
 
 }
