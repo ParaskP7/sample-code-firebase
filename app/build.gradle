@@ -45,6 +45,7 @@ dependencies {
     compile deps.support.appCompat
     compile deps.support.constraintLayout
     compile deps.support.design
+    compile deps.support.cardView
     compile deps.mosby.mvp
     compile deps.mosby.viewState
     compile deps.mosby.mvpNullObjectPresenter
@@ -54,6 +55,7 @@ dependencies {
     compile deps.butterKnife.runtime
     annotationProcessor deps.butterKnife.compiler
     compile deps.logging.timber
+    compile deps.other.jodaTime
     compile(deps.other.findbugs, {
         exclude group: 'net.jcip', module: 'jcip-annotations'
         exclude group: 'com.google.code.findbugs', module: 'jsr305'

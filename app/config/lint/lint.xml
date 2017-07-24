@@ -4,8 +4,34 @@
 
     <!--The google_crash_reporting_api_key is not used (yet) so it is being ignored.-->
     <issue id="UnusedResources">
-        <ignore path="build/generated/res/google-services/debug/values/values.xml" />
-        <ignore path="build/generated/res/google-services/release/values/values.xml" />
+        <ignore path="build/generated/res/google-services/debug/values/values.xml"/>
+        <ignore path="build/generated/res/google-services/release/values/values.xml"/>
+    </issue>
+
+    <!--This file is a convinience file containing all the material colors. The project is not using all of them.-->
+    <issue id="UnusedResources">
+        <ignore path="src\main\res\values\colors__material_design.xml"/>
+    </issue>
+
+    <!--This section is temporary and will be removed as soon as the item_feed.xml is completed.-->
+    <issue id="IconLocation">
+        <ignore path="src\main\res\drawable\test_comment_button_image_view.png"/>
+        <ignore path="src\main\res\drawable\test_icon_image_view.png"/>
+        <ignore path="src\main\res\drawable\test_like_button_image_view.png"/>
+        <ignore path="src\main\res\drawable\test_main_image_view.png"/>
+        <ignore path="src\main\res\drawable\test_share_button_image_view.png"/>
+    </issue>
+    <issue id="UnusedIds">
+        <ignore path="src\main\res\layout\item_feed.xml"/>
+    </issue>
+    <issue id="ContentDescription">
+        <ignore path="src\main\res\layout\item_feed.xml"/>
+    </issue>
+    <issue id="HardcodedText">
+        <ignore path="src\main\res\layout\item_feed.xml"/>
+    </issue>
+    <issue id="RtlHardcoded">
+        <ignore path="src\main\res\layout\item_feed.xml"/>
     </issue>
 
 </lint>

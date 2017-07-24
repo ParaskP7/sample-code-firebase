@@ -5,26 +5,33 @@ import android.widget.TextView;
 
 import com.hubrickchallenge.android.R;
 import com.hubrickchallenge.android.model.FeedItem;
-import com.hubrickchallenge.android.tools.butterknife.InjectedViewHolder;
+import com.hubrickchallenge.android.tools.view.InjectedViewHolder;
+import com.hubrickchallenge.android.util.time.TimeUtil;
 
 import butterknife.BindView;
 
 class FeedItemViewHolder extends InjectedViewHolder {
 
-    @BindView(R.id.typeTextView) TextView typeTextView;
-    @BindView(R.id.idTextView) TextView idTextView;
-    @BindView(R.id.payloadTextView) TextView payloadTextView;
-    @BindView(R.id.authorTextView) TextView authorTextView;
+    @BindView(R.id.authorDisplayNameTextView) TextView authorDisplayNameTextView;
+    @BindView(R.id.updatedAtTextView) TextView updatedAtTextView;
+    @BindView(R.id.plainTitleTextView) TextView plainTitleTextView;
+    @BindView(R.id.plainContentPreviewTextView) TextView plainContentPreviewTextView;
+    @BindView(R.id.likeTextView) TextView likeTextView;
+    @BindView(R.id.commentTextView) TextView commentTextView;
+    @BindView(R.id.shareTextView) TextView shareTextView;
 
     FeedItemViewHolder(View itemView) {
         super(itemView);
     }
 
     void bindFeedItem(FeedItem feedItem) {
-        typeTextView.setText(feedItem.getType());
-        idTextView.setText(feedItem.getId());
-        payloadTextView.setText(feedItem.getPayload().toString());
-        authorTextView.setText(feedItem.getAuthor().toString());
+        authorDisplayNameTextView.setText(feedItem.getAuthor().getDisplayName());
+        updatedAtTextView.setText(TimeUtil.getDateTimeDifference(application, feedItem.getUpdatedAt()));
+        plainTitleTextView.setText(feedItem.getPayload().getPlainTitle());
+        plainContentPreviewTextView.setText(feedItem.getPayload().getPlainContentPreview());
+        likeTextView.setText(String.valueOf(feedItem.getPayload().getStats().getReactionStats().getCounts().getLike()));
+        commentTextView.setText(String.valueOf(feedItem.getPayload().getStats().getCommentStats().getCount()));
+        shareTextView.setText(String.valueOf(feedItem.getPayload().getStats().getReactionStats().getCounts().getShare()));
     }
 
 }

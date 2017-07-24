@@ -3,6 +3,8 @@ package com.hubrickchallenge.android.model;
 import com.google.firebase.database.IgnoreExtraProperties;
 import com.google.firebase.database.PropertyName;
 
+import org.joda.time.DateTime;
+
 @IgnoreExtraProperties
 public class FeedItem {
 
@@ -15,8 +17,10 @@ public class FeedItem {
     @PropertyName("author")
     private Author author;
 
-    public FeedItem() {
-        // Default constructor required for calls to DataSnapshot.getValue(FeedItem.class)
+    private DateTime updatedAt;
+
+    public FeedItem() { // Default constructor required for calls to DataSnapshot.getValue(FeedItem.class)
+        updatedAt = new DateTime();
     }
 
     public String getType() {
@@ -33,6 +37,10 @@ public class FeedItem {
 
     public Author getAuthor() {
         return author;
+    }
+
+    public DateTime getUpdatedAt() {
+        return updatedAt;
     }
 
     @Override

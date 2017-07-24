@@ -20,20 +20,31 @@ import timber.log.Timber;
 
 public class FeedItemAdapter extends RecyclerView.Adapter<FeedItemViewHolder> {
 
+    private DatabaseReference databaseReference;
+    private ChildEventListener childEventListener;
+
     private List<FeedItem> feedItems = new ArrayList<>();
 
     public FeedItemAdapter(DatabaseReference databaseReference) {
-        addChildEventListener(databaseReference);
+        this.databaseReference = databaseReference;
     }
 
-    private void addChildEventListener(DatabaseReference databaseReference) {
-        databaseReference.addChildEventListener(new ChildEventListener() {
+    @Override
+    public void onAttachedToRecyclerView(RecyclerView recyclerView) {
+        super.onAttachedToRecyclerView(recyclerView);
+        addChildEventListener();
+        Timber.d("%s attached.", getClass().getSimpleName());
+    }
+
+    private void addChildEventListener() {
+        childEventListener = new ChildEventListener() {
 
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String previousChildName) {
+                Timber.d("Child added: %s", dataSnapshot.getValue());
                 try {
                     FeedItem feedItem = dataSnapshot.getValue(FeedItem.class);
-                    Timber.d("Child added: %s", feedItem);
+                    Timber.i("Feed item added: %s", feedItem);
                     feedItems.add(feedItem);
                     notifyItemInserted(feedItems.size() - 1);
                 } catch (DatabaseException de) {
@@ -61,7 +72,8 @@ public class FeedItemAdapter extends RecyclerView.Adapter<FeedItemViewHolder> {
                 Timber.w(databaseError.toException(), "Database error.");
             }
 
-        });
+        };
+        databaseReference.addChildEventListener(childEventListener);
     }
 
     @Override
@@ -80,6 +92,13 @@ public class FeedItemAdapter extends RecyclerView.Adapter<FeedItemViewHolder> {
     @Override
     public int getItemCount() {
         return feedItems.size();
+    }
+
+    @Override
+    public void onDetachedFromRecyclerView(RecyclerView recyclerView) {
+        Timber.d("%s detached.", getClass().getSimpleName());
+        databaseReference.removeEventListener(childEventListener);
+        super.onDetachedFromRecyclerView(recyclerView);
     }
 
 }
