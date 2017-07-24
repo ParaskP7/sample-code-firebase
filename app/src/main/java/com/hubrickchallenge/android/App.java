@@ -1,18 +1,20 @@
 package com.hubrickchallenge.android;
 
-import android.app.Application;
+import android.support.multidex.MultiDexApplication;
 
 import com.hubrickchallenge.android.actions.AppSnackbarActions;
 import com.hubrickchallenge.android.actions.SnackbarActions;
 import com.hubrickchallenge.android.tools.dagger.components.ApplicationComponent;
 import com.hubrickchallenge.android.tools.dagger.components.DaggerApplicationComponent;
 import com.hubrickchallenge.android.tools.dagger.modules.ApplicationModule;
+import com.hubrickchallenge.android.tools.dagger.modules.DatastoreModule;
 
 import javax.inject.Inject;
 
+import io.realm.Realm;
 import timber.log.Timber;
 
-public class App extends Application {
+public class App extends MultiDexApplication {
 
     private static ApplicationComponent applicationComponent;
 
@@ -27,6 +29,7 @@ public class App extends Application {
         super.onCreate();
         initTimber();
         initDagger();
+        initRealm();
         Timber.i("Firebase application created!");
     }
 
@@ -37,8 +40,19 @@ public class App extends Application {
     private void initDagger() {
         applicationComponent = DaggerApplicationComponent.builder()
                 .applicationModule(new ApplicationModule(this))
+                .datastoreModule(new DatastoreModule())
                 .build();
         applicationComponent.inject(this);
+    }
+
+    private void initRealm() {
+        Realm.init(this);
+    }
+
+    // GET // ******************************************************************************************************************************
+
+    public Realm getDefaultRealmInstance() {
+        return Realm.getDefaultInstance();
     }
 
     // ACTIONS // **************************************************************************************************************************

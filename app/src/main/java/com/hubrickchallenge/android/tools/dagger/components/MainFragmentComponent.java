@@ -7,7 +7,7 @@ import com.hubrickchallenge.android.tools.dagger.scopes.ActivityScope;
 import dagger.Component;
 
 @ActivityScope
-@Component(dependencies = ApplicationComponent.class, modules = MainFragmentModule.class)
+@Component(dependencies = ApplicationComponent.class, modules = {MainFragmentModule.class})
 public interface MainFragmentComponent extends BaseFragmentComponent<MainFragment> {
 
 }

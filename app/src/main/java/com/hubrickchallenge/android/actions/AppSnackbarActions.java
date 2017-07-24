@@ -29,7 +29,7 @@ public class AppSnackbarActions implements SnackbarActions {
 
     @Override
     public void show(int textResId) {
-        final String text = application.getString(textResId);
+        String text = application.getString(textResId);
         if (coordinatorLayout != null) {
             Snackbar snackbar = Snackbar.make(coordinatorLayout, text, Snackbar.LENGTH_LONG)
                     .setAction(defaultActionText, null);

@@ -3,8 +3,10 @@ package com.hubrickchallenge.android.model;
 import com.google.firebase.database.IgnoreExtraProperties;
 import com.google.firebase.database.PropertyName;
 
+import io.realm.RealmObject;
+
 @IgnoreExtraProperties
-public class Stats {
+public class Stats extends RealmObject {
 
     @PropertyName("commentStats")
     private CommentStats commentStats;
@@ -15,17 +17,20 @@ public class Stats {
         // Default constructor required for calls to DataSnapshot.getValue(Stats.class)
     }
 
-    public Stats(CommentStats commentStats, ReactionStats reactionStats) {
-        this.commentStats = commentStats;
-        this.reactionStats = reactionStats;
-    }
-
     public CommentStats getCommentStats() {
         return commentStats;
     }
 
+    public void setCommentStats(CommentStats commentStats) {
+        this.commentStats = commentStats;
+    }
+
     public ReactionStats getReactionStats() {
         return reactionStats;
+    }
+
+    public void setReactionStats(ReactionStats reactionStats) {
+        this.reactionStats = reactionStats;
     }
 
     @Override

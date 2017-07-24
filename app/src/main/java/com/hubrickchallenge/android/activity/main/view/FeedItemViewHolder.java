@@ -26,7 +26,7 @@ class FeedItemViewHolder extends InjectedViewHolder {
 
     void bindFeedItem(FeedItem feedItem) {
         authorDisplayNameTextView.setText(feedItem.getAuthor().getDisplayName());
-        updatedAtTextView.setText(TimeUtil.getDateTimeDifference(application, feedItem.getUpdatedAt()));
+        updatedAtTextView.setText(TimeUtil.getDateTimeDifference(application, TimeUtil.dateTimeFromString(feedItem.getUpdatedAt())));
         plainTitleTextView.setText(feedItem.getPayload().getPlainTitle());
         plainContentPreviewTextView.setText(feedItem.getPayload().getPlainContentPreview());
         likeTextView.setText(String.valueOf(feedItem.getPayload().getStats().getReactionStats().getCounts().getLike()));

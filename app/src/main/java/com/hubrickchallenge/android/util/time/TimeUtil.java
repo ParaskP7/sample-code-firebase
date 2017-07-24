@@ -7,8 +7,12 @@ import com.hubrickchallenge.android.R;
 import org.joda.time.DateTime;
 import org.joda.time.Duration;
 import org.joda.time.ReadableInstant;
+import org.joda.time.format.DateTimeFormat;
+import org.joda.time.format.DateTimeFormatter;
 
 public class TimeUtil {
+
+    private static final DateTimeFormatter DATE_TIME_FORMATTER = DateTimeFormat.forPattern("yyyy-MM-dd HH:mm:ss.SSS");
 
     private static final int ONE_WEEK_IN_DAYS = 7;
     private static final int ONE_MONTH_IN_DAYS = 30;
@@ -16,6 +20,14 @@ public class TimeUtil {
 
     private TimeUtil() {
         throw new AssertionError();
+    }
+
+    public static String dateTimeToString(final DateTime dateTime) {
+        return dateTime.toString(DATE_TIME_FORMATTER);
+    }
+
+    public static DateTime dateTimeFromString(final String dateTime) {
+        return DateTime.parse(dateTime, DATE_TIME_FORMATTER);
     }
 
     /**

@@ -3,8 +3,10 @@ package com.hubrickchallenge.android.model;
 import com.google.firebase.database.IgnoreExtraProperties;
 import com.google.firebase.database.PropertyName;
 
+import io.realm.RealmObject;
+
 @IgnoreExtraProperties
-public class CommentStats {
+public class CommentStats extends RealmObject {
 
     @PropertyName("count")
     private Long count;
@@ -15,6 +17,10 @@ public class CommentStats {
 
     public Long getCount() {
         return count;
+    }
+
+    public void setCount(Long count) {
+        this.count = count;
     }
 
     @Override

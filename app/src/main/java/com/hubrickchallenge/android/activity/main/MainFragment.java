@@ -7,7 +7,7 @@ import android.view.View;
 import com.hubrickchallenge.android.R;
 import com.hubrickchallenge.android.activity.BaseFragment;
 import com.hubrickchallenge.android.activity.main.presenter.MainFragmentPresenter;
-import com.hubrickchallenge.android.activity.main.view.FeedItemAdapter;
+import com.hubrickchallenge.android.activity.main.view.FeedItemAdapterImpl;
 import com.hubrickchallenge.android.activity.main.view.MainFragmentView;
 import com.hubrickchallenge.android.activity.main.view.MainFragmentViewState;
 import com.hubrickchallenge.android.tools.dagger.components.ComponentFactory;
@@ -25,7 +25,7 @@ public class MainFragment extends BaseFragment<
         MainFragmentViewState>
         implements MainFragmentView {
 
-    @Inject FeedItemAdapter feedItemAdapter;
+    @Inject FeedItemAdapterImpl feedItemAdapterImpl;
 
     @BindView(R.id.recyclerView) RecyclerView recyclerView;
 
@@ -46,7 +46,7 @@ public class MainFragment extends BaseFragment<
     }
 
     private void setRecyclerView() {
-        recyclerView.setAdapter(feedItemAdapter);
+        recyclerView.setAdapter(feedItemAdapterImpl);
     }
 
 }

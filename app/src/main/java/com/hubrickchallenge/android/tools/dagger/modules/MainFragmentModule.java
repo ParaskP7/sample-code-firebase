@@ -3,8 +3,9 @@ package com.hubrickchallenge.android.tools.dagger.modules;
 import com.google.firebase.database.FirebaseDatabase;
 import com.hubrickchallenge.android.activity.main.presenter.MainFragmentPresenter;
 import com.hubrickchallenge.android.activity.main.presenter.MainFragmentPresenterImpl;
-import com.hubrickchallenge.android.activity.main.view.FeedItemAdapter;
+import com.hubrickchallenge.android.activity.main.view.FeedItemAdapterImpl;
 import com.hubrickchallenge.android.activity.main.view.MainFragmentViewState;
+import com.hubrickchallenge.android.datastore.Datastore;
 
 import dagger.Module;
 import dagger.Provides;
@@ -13,8 +14,8 @@ import dagger.Provides;
 public class MainFragmentModule {
 
     @Provides
-    MainFragmentPresenter providesMainFragmentPresenter() {
-        return new MainFragmentPresenterImpl();
+    MainFragmentPresenter providesMainFragmentPresenter(Datastore datastore) {
+        return new MainFragmentPresenterImpl(datastore);
     }
 
     @Provides
@@ -23,8 +24,8 @@ public class MainFragmentModule {
     }
 
     @Provides
-    FeedItemAdapter providesFeedItemAdapter() {
-        return new FeedItemAdapter(FirebaseDatabase.getInstance().getReference());
+    FeedItemAdapterImpl providesFeedItemAdapter() {
+        return new FeedItemAdapterImpl(FirebaseDatabase.getInstance().getReference());
     }
 
 }

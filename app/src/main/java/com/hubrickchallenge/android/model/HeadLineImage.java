@@ -3,8 +3,10 @@ package com.hubrickchallenge.android.model;
 import com.google.firebase.database.IgnoreExtraProperties;
 import com.google.firebase.database.PropertyName;
 
+import io.realm.RealmObject;
+
 @IgnoreExtraProperties
-public class HeadLineImage {
+public class HeadLineImage extends RealmObject {
 
     @PropertyName("mimeType")
     private String mimeType;
@@ -19,8 +21,16 @@ public class HeadLineImage {
         return mimeType;
     }
 
+    public void setMimeType(String mimeType) {
+        this.mimeType = mimeType;
+    }
+
     public String getUrl() {
         return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
     }
 
     @Override

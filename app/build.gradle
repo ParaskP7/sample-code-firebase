@@ -1,4 +1,5 @@
 apply plugin: 'com.android.application'
+apply plugin: 'realm-android'
 apply plugin: 'com.github.ben-manes.versions'
 
 apply from: 'config/gradle/quality.gradle'
@@ -46,6 +47,7 @@ dependencies {
     compile deps.support.constraintLayout
     compile deps.support.design
     compile deps.support.cardView
+    compile deps.support.multiDex
     compile deps.mosby.mvp
     compile deps.mosby.viewState
     compile deps.mosby.mvpNullObjectPresenter
@@ -54,6 +56,8 @@ dependencies {
     annotationProcessor deps.dagger.compiler
     compile deps.butterKnife.runtime
     annotationProcessor deps.butterKnife.compiler
+    compile deps.rx.java
+    compile deps.rx.android
     compile deps.logging.timber
     compile deps.other.jodaTime
     compile(deps.other.findbugs, {
