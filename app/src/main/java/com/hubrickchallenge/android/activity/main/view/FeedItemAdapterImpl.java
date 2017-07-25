@@ -15,6 +15,8 @@ import timber.log.Timber;
 
 public class FeedItemAdapterImpl extends RecyclerView.Adapter<FeedItemViewHolder> implements FeedItemAdapter {
 
+    public static final int POSITION_TOP = 0;
+
     private List<FeedItem> feedItems = new ArrayList<>();
 
     public FeedItemAdapterImpl() {
@@ -55,15 +57,15 @@ public class FeedItemAdapterImpl extends RecyclerView.Adapter<FeedItemViewHolder
     public void setData(FeedItem feedItem) {
         Timber.v("Updating adapter with feed item");
         if (!feedItems.contains(feedItem)) {
-            feedItems.add(feedItem);
-            notifyItemInserted(feedItems.size() - 1);
+            feedItems.add(POSITION_TOP, feedItem);
+            notifyItemInserted(POSITION_TOP);
         }
     }
 
     @Override
     public void setData(List<FeedItem> feedItems) {
         Timber.v("Updating adapter with feed items");
-        this.feedItems = feedItems;
+        this.feedItems = new ArrayList<>(feedItems);
         notifyDataSetChanged();
     }
 

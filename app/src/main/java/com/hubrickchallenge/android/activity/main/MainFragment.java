@@ -21,6 +21,7 @@ import javax.annotation.Nullable;
 import javax.inject.Inject;
 
 import butterknife.BindView;
+import butterknife.OnClick;
 import timber.log.Timber;
 
 public class MainFragment extends BaseFragment<
@@ -29,6 +30,8 @@ public class MainFragment extends BaseFragment<
         MainFragmentPresenter,
         MainFragmentViewState>
         implements MainFragmentView {
+
+    private static final int DIRECTION_UPWARDS = 0;
 
     @Inject FeedItemAdapterImpl feedItemAdapterImpl;
 
@@ -65,6 +68,9 @@ public class MainFragment extends BaseFragment<
     public void displayFeedItem(FeedItem feedItem) {
         Timber.i("Displaying feed item: %s", feedItem);
         getViewState().saveFeedItem(feedItem);
+        if (recyclerView.canScrollVertically(DIRECTION_UPWARDS)) {
+            notificationButton.setVisibility(View.VISIBLE);
+        }
         feedItemAdapterImpl.setData(feedItem);
     }
 
@@ -73,6 +79,12 @@ public class MainFragment extends BaseFragment<
         Timber.i("Displaying feed items: %s", feedItems);
         getViewState().saveFeedItems(feedItems);
         feedItemAdapterImpl.setData(feedItems);
+    }
+
+    @OnClick(R.id.notificationButton)
+    void onNotificationButtonClick() {
+        notificationButton.setVisibility(View.INVISIBLE);
+        recyclerView.smoothScrollToPosition(DIRECTION_UPWARDS);
     }
 
     @Override

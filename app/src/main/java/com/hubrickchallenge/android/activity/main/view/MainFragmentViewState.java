@@ -5,9 +5,12 @@ import android.support.annotation.Nullable;
 import com.hannesdorfmann.mosby3.mvp.viewstate.ViewState;
 import com.hubrickchallenge.android.model.FeedItem;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import timber.log.Timber;
+
+import static com.hubrickchallenge.android.activity.main.view.FeedItemAdapterImpl.POSITION_TOP;
 
 public class MainFragmentViewState implements ViewState<MainFragmentView> {
 
@@ -26,14 +29,14 @@ public class MainFragmentViewState implements ViewState<MainFragmentView> {
         if (feedItems != null) {
             if (!feedItems.contains(feedItem)) {
                 Timber.d("Saving feed item: %s", feedItem);
-                feedItems.add(feedItem);
+                feedItems.add(POSITION_TOP, feedItem);
             }
         }
     }
 
     public void saveFeedItems(List<FeedItem> feedItems) {
         Timber.d("Saving feed items: %s", feedItems);
-        this.feedItems = feedItems;
+        this.feedItems = new ArrayList<>(feedItems);
     }
 
 }
