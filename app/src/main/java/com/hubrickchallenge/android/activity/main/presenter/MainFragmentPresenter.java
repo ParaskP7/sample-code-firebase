@@ -6,4 +6,8 @@ import com.hubrickchallenge.android.activity.main.view.MainFragmentView;
 
 public interface MainFragmentPresenter extends MvpPresenter<MainFragmentView> {
 
+    void subscribeToFeedItems();
+
+    void unsubscribeFromFeedItems();
+
 }

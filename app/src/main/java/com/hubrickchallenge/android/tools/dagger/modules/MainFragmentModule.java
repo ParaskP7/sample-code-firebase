@@ -15,7 +15,7 @@ public class MainFragmentModule {
 
     @Provides
     MainFragmentPresenter providesMainFragmentPresenter(Datastore datastore) {
-        return new MainFragmentPresenterImpl(datastore);
+        return new MainFragmentPresenterImpl(FirebaseDatabase.getInstance().getReference(), datastore);
     }
 
     @Provides
@@ -25,7 +25,7 @@ public class MainFragmentModule {
 
     @Provides
     FeedItemAdapterImpl providesFeedItemAdapter() {
-        return new FeedItemAdapterImpl(FirebaseDatabase.getInstance().getReference());
+        return new FeedItemAdapterImpl();
     }
 
 }

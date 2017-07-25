@@ -30,4 +30,20 @@ public class ReactionStats extends RealmObject {
                 '}';
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        ReactionStats that = (ReactionStats) o;
+
+        return counts.equals(that.counts);
+
+    }
+
+    @Override
+    public int hashCode() {
+        return counts.hashCode();
+    }
+
 }

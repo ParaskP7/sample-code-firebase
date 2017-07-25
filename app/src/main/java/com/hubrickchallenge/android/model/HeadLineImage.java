@@ -5,6 +5,8 @@ import com.google.firebase.database.PropertyName;
 
 import io.realm.RealmObject;
 
+import static com.hubrickchallenge.android.util.GeneralUtil.HASH_CODE;
+
 @IgnoreExtraProperties
 public class HeadLineImage extends RealmObject {
 
@@ -39,6 +41,25 @@ public class HeadLineImage extends RealmObject {
                 "mimeType='" + mimeType + '\'' +
                 ", url='" + url + '\'' +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        HeadLineImage that = (HeadLineImage) o;
+
+        if (!mimeType.equals(that.mimeType)) return false;
+        return url.equals(that.url);
+
+    }
+
+    @Override
+    public int hashCode() {
+        int result = mimeType.hashCode();
+        result = HASH_CODE * result + url.hashCode();
+        return result;
     }
 
 }

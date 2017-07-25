@@ -9,6 +9,8 @@ import org.joda.time.DateTime;
 import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;
 
+import static com.hubrickchallenge.android.util.GeneralUtil.HASH_CODE;
+
 @IgnoreExtraProperties
 public class FeedItem extends RealmObject {
 
@@ -80,6 +82,31 @@ public class FeedItem extends RealmObject {
                 ", author=" + author +
                 ", updatedAt='" + updatedAt + '\'' +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        FeedItem feedItem = (FeedItem) o;
+
+        if (!type.equals(feedItem.type)) return false;
+        if (!id.equals(feedItem.id)) return false;
+        if (!payload.equals(feedItem.payload)) return false;
+        if (!author.equals(feedItem.author)) return false;
+        return updatedAt.equals(feedItem.updatedAt);
+
+    }
+
+    @Override
+    public int hashCode() {
+        int result = type.hashCode();
+        result = HASH_CODE * result + id.hashCode();
+        result = HASH_CODE * result + payload.hashCode();
+        result = HASH_CODE * result + author.hashCode();
+        result = HASH_CODE * result + updatedAt.hashCode();
+        return result;
     }
 
 }

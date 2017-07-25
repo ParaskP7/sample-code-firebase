@@ -5,6 +5,8 @@ import com.google.firebase.database.PropertyName;
 
 import io.realm.RealmObject;
 
+import static com.hubrickchallenge.android.util.GeneralUtil.HASH_CODE;
+
 @IgnoreExtraProperties
 public class Counts extends RealmObject {
 
@@ -39,6 +41,25 @@ public class Counts extends RealmObject {
                 "share=" + share +
                 ", like=" + like +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Counts counts = (Counts) o;
+
+        if (!share.equals(counts.share)) return false;
+        return like.equals(counts.like);
+
+    }
+
+    @Override
+    public int hashCode() {
+        int result = share.hashCode();
+        result = HASH_CODE * result + like.hashCode();
+        return result;
     }
 
 }

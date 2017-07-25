@@ -5,6 +5,8 @@ import com.google.firebase.database.PropertyName;
 
 import io.realm.RealmObject;
 
+import static com.hubrickchallenge.android.util.GeneralUtil.HASH_CODE;
+
 @IgnoreExtraProperties
 public class Stats extends RealmObject {
 
@@ -39,6 +41,25 @@ public class Stats extends RealmObject {
                 "commentStats=" + commentStats +
                 ", reactionStats=" + reactionStats +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Stats stats = (Stats) o;
+
+        if (!commentStats.equals(stats.commentStats)) return false;
+        return reactionStats.equals(stats.reactionStats);
+
+    }
+
+    @Override
+    public int hashCode() {
+        int result = commentStats.hashCode();
+        result = HASH_CODE * result + reactionStats.hashCode();
+        return result;
     }
 
 }

@@ -5,6 +5,8 @@ import com.google.firebase.database.PropertyName;
 
 import io.realm.RealmObject;
 
+import static com.hubrickchallenge.android.util.GeneralUtil.HASH_CODE;
+
 @IgnoreExtraProperties
 public class Author extends RealmObject {
 
@@ -50,6 +52,27 @@ public class Author extends RealmObject {
                 ", avatarImage=" + avatarImage +
                 ", displayName='" + displayName + '\'' +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Author author = (Author) o;
+
+        if (!name.equals(author.name)) return false;
+        if (!avatarImage.equals(author.avatarImage)) return false;
+        return displayName.equals(author.displayName);
+
+    }
+
+    @Override
+    public int hashCode() {
+        int result = name.hashCode();
+        result = HASH_CODE * result + avatarImage.hashCode();
+        result = HASH_CODE * result + displayName.hashCode();
+        return result;
     }
 
 }

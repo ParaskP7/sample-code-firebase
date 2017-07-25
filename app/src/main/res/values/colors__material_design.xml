@@ -77,6 +77,7 @@
     <color name="indigo_material_300">#7986CB</color>
     <color name="indigo_material_400">#5C6BC0</color>
     <color name="indigo_material_500">#3F51B5</color> <!--main-->
+    <color name="indigo_material_500_semi_transparent">#993F51B5</color> <!--main-->
     <color name="indigo_material_600">#3949AB</color>
     <color name="indigo_material_700">#303F9F</color>
     <color name="indigo_material_800">#283593</color>
