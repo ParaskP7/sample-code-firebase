@@ -39,7 +39,7 @@ public class MainActivity extends BaseActivity {
 
     @OnClick(R.id.fab)
     void onFabClick() {
-        snackbar().show(R.string.snackbar_firebase_text);
+        snackbar().show(R.string.snackbar_text);
     }
 
 }

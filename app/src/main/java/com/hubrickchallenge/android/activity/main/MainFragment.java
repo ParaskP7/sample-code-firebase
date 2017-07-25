@@ -38,6 +38,8 @@ public class MainFragment extends BaseFragment<
     @BindView(R.id.notificationButton) AppCompatButton notificationButton;
     @BindView(R.id.recyclerView) RecyclerView recyclerView;
 
+    private boolean isStooped;
+
     @Override
     protected int getLayoutId() {
         return R.layout.fragment_main;
@@ -65,13 +67,38 @@ public class MainFragment extends BaseFragment<
     }
 
     @Override
+    public void onStart() {
+        super.onStart();
+        isStooped = false;
+        checkAndShowNotificationButton();
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        isStooped = true;
+    }
+
+    @Override
     public void displayFeedItem(FeedItem feedItem) {
         Timber.i("Displaying feed item: %s", feedItem);
         getViewState().saveFeedItem(feedItem);
+        showNotification();
+        feedItemAdapterImpl.setData(feedItem);
+    }
+
+    private void showNotification() {
+        if (isStooped) {
+            notification().show();
+        } else {
+            checkAndShowNotificationButton();
+        }
+    }
+
+    private void checkAndShowNotificationButton() {
         if (recyclerView.canScrollVertically(DIRECTION_UPWARDS)) {
             notificationButton.setVisibility(View.VISIBLE);
         }
-        feedItemAdapterImpl.setData(feedItem);
     }
 
     @Override

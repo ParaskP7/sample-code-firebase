@@ -23,6 +23,8 @@ public interface ApplicationComponent {
 
     // Downstream components need these exposed the method name does not matter, only the return type.
 
+    App application();
+
     Datastore datastore();
 
 }

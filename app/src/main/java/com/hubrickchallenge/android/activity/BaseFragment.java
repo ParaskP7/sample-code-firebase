@@ -16,6 +16,8 @@ import com.hannesdorfmann.mosby3.mvp.delegate.FragmentMvpViewStateDelegateImpl;
 import com.hannesdorfmann.mosby3.mvp.delegate.MvpViewStateDelegateCallback;
 import com.hannesdorfmann.mosby3.mvp.viewstate.MvpViewStateFragment;
 import com.hannesdorfmann.mosby3.mvp.viewstate.ViewState;
+import com.hubrickchallenge.android.App;
+import com.hubrickchallenge.android.actions.NotificationActions;
 import com.hubrickchallenge.android.tools.dagger.components.BaseFragmentComponent;
 
 import javax.annotation.Nullable;
@@ -31,6 +33,8 @@ public abstract class BaseFragment<
         PRESENTER extends MvpPresenter<VIEW>,
         VIEW_STATE extends ViewState<VIEW>>
         extends Fragment implements MvpViewStateDelegateCallback<VIEW, PRESENTER, VIEW_STATE> {
+
+    @Inject App application;
 
     /**
      * Can't inject directly, as the presenter instantiation needs to happen by mosby in {@link this#createPresenter()}.
@@ -253,6 +257,12 @@ public abstract class BaseFragment<
     @Override
     public void onViewStateInstanceRestored(boolean instanceStateRetained) {
         Timber.d("%s view state restored [%b].", getClass().getSimpleName(), instanceStateRetained);
+    }
+
+    // ACTIONS // **************************************************************************************************************************
+
+    protected NotificationActions notification() {
+        return application.notification();
     }
 
 }

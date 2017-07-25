@@ -1,6 +1,7 @@
 package com.hubrickchallenge.android.tools.dagger.modules;
 
 import com.hubrickchallenge.android.App;
+import com.hubrickchallenge.android.actions.AppNotificationActions;
 import com.hubrickchallenge.android.actions.AppSnackbarActions;
 
 import dagger.Module;
@@ -18,6 +19,11 @@ public class ApplicationModule {
     @Provides
     App providesApplication() {
         return application;
+    }
+
+    @Provides
+    AppNotificationActions providesAppNotificationActions() {
+        return new AppNotificationActions(application);
     }
 
     @Provides

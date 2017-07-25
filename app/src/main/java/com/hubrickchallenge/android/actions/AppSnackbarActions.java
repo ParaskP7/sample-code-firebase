@@ -19,7 +19,7 @@ public class AppSnackbarActions implements SnackbarActions {
 
     public AppSnackbarActions(App application) {
         this.application = application;
-        this.defaultActionText = application.getString(R.string.snackbar_firebase_default_action_text);
+        this.defaultActionText = application.getString(R.string.snackbar_default_action_text);
     }
 
     @Override

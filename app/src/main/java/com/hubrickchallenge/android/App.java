@@ -2,7 +2,9 @@ package com.hubrickchallenge.android;
 
 import android.support.multidex.MultiDexApplication;
 
+import com.hubrickchallenge.android.actions.AppNotificationActions;
 import com.hubrickchallenge.android.actions.AppSnackbarActions;
+import com.hubrickchallenge.android.actions.NotificationActions;
 import com.hubrickchallenge.android.actions.SnackbarActions;
 import com.hubrickchallenge.android.tools.dagger.components.ApplicationComponent;
 import com.hubrickchallenge.android.tools.dagger.components.DaggerApplicationComponent;
@@ -23,6 +25,7 @@ public class App extends MultiDexApplication {
     }
 
     @Inject AppSnackbarActions appSnackbarActions;
+    @Inject AppNotificationActions appNotificationActions;
 
     @Override
     public void onCreate() {
@@ -56,6 +59,10 @@ public class App extends MultiDexApplication {
     }
 
     // ACTIONS // **************************************************************************************************************************
+
+    public NotificationActions notification() {
+        return appNotificationActions;
+    }
 
     public SnackbarActions snackbar() {
         return appSnackbarActions;

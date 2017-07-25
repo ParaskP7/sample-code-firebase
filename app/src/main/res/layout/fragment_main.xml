@@ -19,7 +19,7 @@
         android:background="@drawable/notification_button_background"
         android:paddingLeft="50dp"
         android:paddingRight="50dp"
-        android:text="@string/notification_button_text"
+        android:text="@string/notification_text"
         android:textColor="@color/white"
         android:textSize="17sp"
         android:visibility="invisible"
