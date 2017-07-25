@@ -15,11 +15,15 @@
 
     <!--This section is temporary and will be removed as soon as the item_feed.xml is completed.-->
     <issue id="IconLocation">
-        <ignore path="src\main\res\drawable\test_comment_button_image_view.png"/>
         <ignore path="src\main\res\drawable\test_icon_image_view.png"/>
-        <ignore path="src\main\res\drawable\test_like_button_image_view.png"/>
+        <ignore path="src\main\res\drawable\test_icon_image_view_deleted.png"/>
         <ignore path="src\main\res\drawable\test_main_image_view.png"/>
+        <ignore path="src\main\res\drawable\test_like_button_image_view.png"/>
+        <ignore path="src\main\res\drawable\test_like_button_image_view_deleted.png"/>
+        <ignore path="src\main\res\drawable\test_comment_button_image_view.png"/>
+        <ignore path="src\main\res\drawable\test_comment_button_image_view_deleted.png"/>
         <ignore path="src\main\res\drawable\test_share_button_image_view.png"/>
+        <ignore path="src\main\res\drawable\test_share_button_image_view_deleted.png"/>
     </issue>
     <issue id="UnusedIds">
         <ignore path="src\main\res\layout\item_feed.xml"/>
