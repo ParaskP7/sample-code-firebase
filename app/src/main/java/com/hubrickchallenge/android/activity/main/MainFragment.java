@@ -87,10 +87,4 @@ public class MainFragment extends BaseFragment<
         recyclerView.smoothScrollToPosition(DIRECTION_UPWARDS);
     }
 
-    @Override
-    public void onStop() {
-        super.onStop();
-        getPresenter().unsubscribeFromFeedItems();
-    }
-
 }

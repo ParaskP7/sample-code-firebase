@@ -15,7 +15,6 @@ import static com.hubrickchallenge.android.util.GeneralUtil.HASH_CODE;
 public class FeedItem extends RealmObject {
 
     public static final String ID = "id";
-    public static final String UPDATED_AT = "updatedAt";
 
     @PropertyName("type")
     private String type;

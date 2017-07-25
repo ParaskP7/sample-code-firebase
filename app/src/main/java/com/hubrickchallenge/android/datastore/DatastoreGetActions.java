@@ -8,6 +8,7 @@ import com.hubrickchallenge.android.model.FeedItem;
 import java.util.List;
 
 import io.realm.Realm;
+import io.realm.Sort;
 import timber.log.Timber;
 
 public class DatastoreGetActions implements GetActions {
@@ -21,7 +22,8 @@ public class DatastoreGetActions implements GetActions {
     @Override
     public List<FeedItem> allFeedItems() {
         List<FeedItem> feedItems = realm.where(FeedItem.class)
-                .findAll();
+                .findAll()
+                .sort(FeedItem.ID, Sort.DESCENDING);
         if (feedItems.isEmpty()) {
             Timber.d("There are no feed items.");
         }
