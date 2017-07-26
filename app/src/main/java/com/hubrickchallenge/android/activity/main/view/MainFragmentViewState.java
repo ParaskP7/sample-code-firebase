@@ -26,15 +26,22 @@ public class MainFragmentViewState implements ViewState<MainFragmentView> {
     }
 
     public void saveFeedItem(FeedItem feedItem) {
-        if (feedItems != null) {
-            if (!feedItems.contains(feedItem)) {
-                Timber.d("Saving feed item: %s", feedItem);
-                feedItems.add(POSITION_TOP, feedItem);
-            }
+        initFeedItems();
+        if (!feedItems.contains(feedItem)) {
+            Timber.d("Saving feed item: %s", feedItem);
+            feedItems.add(POSITION_TOP, feedItem);
+        }
+    }
+
+    private void initFeedItems() {
+        if (feedItems == null) {
+            Timber.d("Saving view state");
+            feedItems = new ArrayList<>();
         }
     }
 
     public void saveFeedItems(List<FeedItem> feedItems) {
+        initFeedItems();
         Timber.d("Saving feed items: %s", feedItems);
         this.feedItems = new ArrayList<>(feedItems);
     }

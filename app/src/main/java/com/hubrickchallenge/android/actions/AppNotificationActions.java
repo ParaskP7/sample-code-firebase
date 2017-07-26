@@ -5,6 +5,7 @@ import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Build;
 import android.support.v4.app.NotificationCompat;
@@ -12,11 +13,16 @@ import android.support.v4.app.NotificationManagerCompat;
 
 import com.hubrickchallenge.android.App;
 import com.hubrickchallenge.android.R;
+import com.hubrickchallenge.android.util.GeneralUtil;
 
 import java.util.Collections;
 import java.util.List;
 
 import javax.annotation.Nullable;
+
+import static com.hubrickchallenge.android.notification.NotificationBroadcastReceiver.INTENT_ACTION_NOTIFICATION_CLEARED;
+import static com.hubrickchallenge.android.notification.NotificationBroadcastReceiver.INTENT_ACTION_NOTIFICATION_CLICKED;
+import static com.hubrickchallenge.android.notification.NotificationBroadcastReceiver.INTENT_EXTRA_NOTIFICATION_ID;
 
 public class AppNotificationActions implements NotificationActions {
 
@@ -55,7 +61,28 @@ public class AppNotificationActions implements NotificationActions {
     public void show() {
         final NotificationManagerCompat notificationManagerCompat = NotificationManagerCompat.from(application);
         notificationManagerCompat.notify(DEFAULT_NOTIFICATION_ID,
-                getDefaultNotification(null, null, Collections.<NotificationCompat.Action>emptyList()));
+                getDefaultNotification(getContentPendingIntent(DEFAULT_NOTIFICATION_ID), getDeletedPendingIntent(DEFAULT_NOTIFICATION_ID),
+                        Collections.<NotificationCompat.Action>emptyList()));
+    }
+
+    @Nullable
+    PendingIntent getContentPendingIntent(final int notificationId) {
+        return getPendingIntent(INTENT_ACTION_NOTIFICATION_CLICKED, notificationId);
+    }
+
+    @Nullable
+    PendingIntent getDeletedPendingIntent(final int notificationId) {
+        return getPendingIntent(INTENT_ACTION_NOTIFICATION_CLEARED, notificationId);
+    }
+
+    @Nullable
+    private PendingIntent getPendingIntent(final String intentAction, final int notificationId) {
+        final Intent intent = new Intent(intentAction);
+        intent.putExtra(INTENT_EXTRA_NOTIFICATION_ID, notificationId);
+        final int contentRequestCode = GeneralUtil.randomInt(0, Integer.MAX_VALUE - 1);
+        @Nullable final PendingIntent contentPendingIntent = PendingIntent.getBroadcast(application, contentRequestCode, intent,
+                PendingIntent.FLAG_ONE_SHOT);
+        return contentPendingIntent;
     }
 
     private Notification getDefaultNotification(@Nullable PendingIntent contentPendingIntent, @Nullable PendingIntent deletedPendingIntent,

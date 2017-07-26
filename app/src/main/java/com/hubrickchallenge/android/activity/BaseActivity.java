@@ -1,5 +1,6 @@
 package com.hubrickchallenge.android.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.CallSuper;
 import android.support.annotation.Nullable;
@@ -36,7 +37,7 @@ public abstract class BaseActivity extends AppCompatActivity {
         setButterKnife();
         setToolbar();
         setSnackbar();
-        Timber.d("%s created.", getClass().getSimpleName());
+        Timber.d("%s created. [Bundle: %s]", getClass().getSimpleName(), savedInstanceState);
     }
 
     protected abstract int getLayoutId();
@@ -59,6 +60,12 @@ public abstract class BaseActivity extends AppCompatActivity {
     }
 
     @Override
+    protected void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);
+        Timber.d("%s new intent. [Intent: %s]", getClass().getSimpleName(), intent);
+    }
+
+    @Override
     public void onRestart() {
         super.onRestart();
         Timber.d("%s restarted.", getClass().getSimpleName());
@@ -68,6 +75,12 @@ public abstract class BaseActivity extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
         Timber.d("%s started.", getClass().getSimpleName());
+    }
+
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        Timber.d("%s instance state restored. [Bundle: %s]", getClass().getSimpleName(), savedInstanceState);
     }
 
     @Override
@@ -81,6 +94,12 @@ public abstract class BaseActivity extends AppCompatActivity {
     protected void onPause() {
         Timber.d("%s paused.", getClass().getSimpleName());
         super.onPause();
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        Timber.d("%s instance state saved. [Bundle: %s]", getClass().getSimpleName(), outState);
+        super.onSaveInstanceState(outState);
     }
 
     @Override

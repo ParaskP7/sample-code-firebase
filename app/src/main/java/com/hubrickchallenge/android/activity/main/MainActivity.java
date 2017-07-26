@@ -1,5 +1,7 @@
 package com.hubrickchallenge.android.activity.main;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.Menu;
@@ -11,6 +13,16 @@ import com.hubrickchallenge.android.activity.BaseActivity;
 import butterknife.OnClick;
 
 public class MainActivity extends BaseActivity {
+
+    public static Intent getStartIntent(Context context) {
+        return new Intent(context, MainActivity.class);
+    }
+
+    public static Intent getStartIntentFromNotification(Context context) {
+        Intent intent = new Intent(context, MainActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        return intent;
+    }
 
     // LIFECYCLE // ************************************************************************************************************************
 

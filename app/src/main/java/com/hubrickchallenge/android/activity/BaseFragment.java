@@ -77,7 +77,7 @@ public abstract class BaseFragment<
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getMvpDelegate().onCreate(savedInstanceState);
-        Timber.d("%s created.", getClass().getSimpleName());
+        Timber.d("%s created. [Bundle: %s]", getClass().getSimpleName(), savedInstanceState);
     }
 
     @Nullable
@@ -86,7 +86,7 @@ public abstract class BaseFragment<
         View view = inflater.inflate(getLayoutId(), container, false);
         setDagger();
         setButterKnife(view);
-        Timber.d("%s create view.", getClass().getSimpleName());
+        Timber.d("%s create view. [Bundle: %s]", getClass().getSimpleName(), savedInstanceState);
         return view;
     }
 
@@ -103,10 +103,10 @@ public abstract class BaseFragment<
     }
 
     @Override
-    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) { // After that the activity is created.
         super.onViewCreated(view, savedInstanceState);
         getMvpDelegate().onViewCreated(view, savedInstanceState);
-        Timber.d("%s view created.", getClass().getSimpleName());
+        Timber.d("%s view created. [Bundle: %s]", getClass().getSimpleName(), savedInstanceState);
     }
 
     protected abstract COMPONENT constructComponent();
@@ -115,39 +115,45 @@ public abstract class BaseFragment<
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         getMvpDelegate().onActivityCreated(savedInstanceState);
-        Timber.d("%s activity created.", getClass().getSimpleName());
+        Timber.d("%s activity created. [Bundle: %s]", getClass().getSimpleName(), savedInstanceState);
     }
 
     @Override
-    public void onStart() {
+    public void onViewStateRestored(@Nullable Bundle savedInstanceState) {
+        super.onViewStateRestored(savedInstanceState);
+        Timber.d("%s view state restored. [Bundle: %s]", getClass().getSimpleName(), savedInstanceState);
+    }
+
+    @Override
+    public void onStart() { // After that the activity is started.
         super.onStart();
         getMvpDelegate().onStart();
         Timber.d("%s started.", getClass().getSimpleName());
     }
 
     @Override
-    public void onResume() {
+    public void onResume() { // Prior that the activity is resumed.
         super.onResume();
         getMvpDelegate().onResume();
         Timber.d("%s resumed.", getClass().getSimpleName());
     }
 
     @Override
-    public void onPause() {
+    public void onPause() { // Prior that the activity is paused.
         Timber.d("%s paused.", getClass().getSimpleName());
         super.onPause();
         getMvpDelegate().onPause();
     }
 
     @Override
-    public void onSaveInstanceState(Bundle outState) {
-        Timber.d("%s instance state saved.", getClass().getSimpleName());
+    public void onSaveInstanceState(Bundle outState) { // Prior that the activity instance state is saved.
+        Timber.d("%s instance state saved. [Bundle: %s]", getClass().getSimpleName(), outState);
         super.onSaveInstanceState(outState);
         getMvpDelegate().onSaveInstanceState(outState);
     }
 
     @Override
-    public void onStop() {
+    public void onStop() { // Prior that the activity is stopped.
         Timber.d("%s stopped.", getClass().getSimpleName());
         super.onStop();
         getMvpDelegate().onStop();
