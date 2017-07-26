@@ -1,7 +1,12 @@
 package com.hubrickchallenge.android.actions;
 
 import android.app.Notification;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
 import android.app.PendingIntent;
+import android.content.Context;
+import android.graphics.Color;
+import android.os.Build;
 import android.support.v4.app.NotificationCompat;
 import android.support.v4.app.NotificationManagerCompat;
 
@@ -15,6 +20,10 @@ import javax.annotation.Nullable;
 
 public class AppNotificationActions implements NotificationActions {
 
+    private static final int DEFAULT_NOTIFICATION_ID = 0;
+    private static final String DEFAULT_NOTIFICATION_CHANNEL_ID = "default_channel_id";
+    private static final long[] DEFAULT_NOTIFICATION_CHANNEL_VIBRATION_PATTERN = new long[]{100, 200, 300, 400, 500, 400, 300, 200, 400};
+
     private final App application;
     private final String defaultNotificationTitleText;
     private final String defaultNotificationContentText;
@@ -23,17 +32,35 @@ public class AppNotificationActions implements NotificationActions {
         this.application = application;
         this.defaultNotificationTitleText = application.getString(R.string.app_name);
         this.defaultNotificationContentText = application.getString(R.string.notification_text);
+        initDefaultNotificationChannel();
+    }
+
+    private void initDefaultNotificationChannel() {
+        if (Build.VERSION.SDK_INT > Build.VERSION_CODES.O) {
+            String defaultChannelName = application.getString(R.string.notification_default_channel_name);
+            NotificationChannel defaultNotificationChannel = new NotificationChannel(DEFAULT_NOTIFICATION_CHANNEL_ID, defaultChannelName,
+                    NotificationManager.IMPORTANCE_DEFAULT);
+            String defaultChannelDescription = application.getString(R.string.notification_default_channel_description);
+            defaultNotificationChannel.setDescription(defaultChannelDescription);
+            defaultNotificationChannel.enableLights(true);
+            defaultNotificationChannel.setLightColor(Color.RED);
+            defaultNotificationChannel.enableVibration(true);
+            defaultNotificationChannel.setVibrationPattern(DEFAULT_NOTIFICATION_CHANNEL_VIBRATION_PATTERN);
+            NotificationManager notificationManager = (NotificationManager) application.getSystemService(Context.NOTIFICATION_SERVICE);
+            notificationManager.createNotificationChannel(defaultNotificationChannel);
+        }
     }
 
     @Override
     public void show() {
         final NotificationManagerCompat notificationManagerCompat = NotificationManagerCompat.from(application);
-        notificationManagerCompat.notify(0, getSingleNotification(null, null, Collections.<NotificationCompat.Action>emptyList()));
+        notificationManagerCompat.notify(DEFAULT_NOTIFICATION_ID,
+                getDefaultNotification(null, null, Collections.<NotificationCompat.Action>emptyList()));
     }
 
-    private Notification getSingleNotification(@Nullable PendingIntent contentPendingIntent, @Nullable PendingIntent deletedPendingIntent,
-                                               final List<NotificationCompat.Action> notificationActions) {
-        final NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(application)
+    private Notification getDefaultNotification(@Nullable PendingIntent contentPendingIntent, @Nullable PendingIntent deletedPendingIntent,
+                                                final List<NotificationCompat.Action> notificationActions) {
+        final NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(application, DEFAULT_NOTIFICATION_CHANNEL_ID)
                 .setContentTitle(defaultNotificationTitleText)
                 .setContentText(defaultNotificationContentText)
                 .setDefaults(NotificationCompat.PRIORITY_MAX)
