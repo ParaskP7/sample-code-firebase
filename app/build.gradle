@@ -59,6 +59,7 @@ dependencies {
     compile deps.rx.java
     compile deps.rx.android
     compile deps.logging.timber
+    compile deps.animation.lottie
     compile deps.other.jodaTime
     compile(deps.other.findbugs, {
         exclude group: 'net.jcip', module: 'jcip-annotations'

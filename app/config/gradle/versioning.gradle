@@ -44,6 +44,9 @@ ext.versions = [
         // Logging
         timber          : '4.5.1',
 
+        // Animation
+        lottie          : '2.1.0',
+
         // Other
         jodaTime        : '2.9.9',
         findbugs        : '3.0.1',
@@ -86,6 +89,9 @@ ext.deps = [
         ],
         'logging'    : [
                 'timber': "com.jakewharton.timber:timber:$versions.timber",
+        ],
+        'animation'    : [
+                'lottie': "com.airbnb.android:lottie:$versions.lottie",
         ],
         'other'      : [
                 'jodaTime': "net.danlew:android.joda:$versions.jodaTime",

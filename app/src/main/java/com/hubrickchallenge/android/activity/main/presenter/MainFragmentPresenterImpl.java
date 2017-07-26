@@ -32,6 +32,7 @@ public class MainFragmentPresenterImpl extends MvpNullObjectBasePresenter<MainFr
 
     @Override
     public void subscribeToFeedItems() {
+        getView().showLoading();
         addChildEventListener();
     }
 
@@ -79,6 +80,7 @@ public class MainFragmentPresenterImpl extends MvpNullObjectBasePresenter<MainFr
             @Override
             public void onCancelled(DatabaseError databaseError) {
                 Timber.w(databaseError.toException(), "Database error.");
+                getView().showLoadingError();
             }
 
         };
@@ -94,6 +96,12 @@ public class MainFragmentPresenterImpl extends MvpNullObjectBasePresenter<MainFr
         if (childEventListener != null) {
             databaseReference.removeEventListener(childEventListener);
         }
+    }
+
+    @Override
+    public void resubscribeToFeedItems() {
+        unsubscribeFromFeedItems();
+        subscribeToFeedItems();
     }
 
     @Override

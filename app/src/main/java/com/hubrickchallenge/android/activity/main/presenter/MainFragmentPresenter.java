@@ -10,6 +10,8 @@ public interface MainFragmentPresenter extends MvpPresenter<MainFragmentView> {
 
     void unsubscribeFromFeedItems();
 
+    void resubscribeToFeedItems();
+
     void checkAndShowNotification(boolean isFragmentStopped);
 
 }

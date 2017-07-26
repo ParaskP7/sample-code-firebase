@@ -18,7 +18,8 @@ The below listed skills are the main focus:
     3. [RxJava](https://github.com/ReactiveX/RxJava) ```(RxJava – Reactive Extensions for the JVM – a library for composing asynchronous and event-based programs using observable sequences for the Java VM)```
     4. [Realm](https://github.com/realm/realm-java) ```(Realm is a mobile database: a replacement for SQLite & ORMs)```
     5. [Timber](https://github.com/JakeWharton/timber) ```(A logger with a small, extensible API which provides utility on top of Android's normal Log class)```
-    6. [Joba](https://github.com/dlew/joda-time-android) ```(A version of Joda-Time built with Android in mind)```
+    6. [Lottie](https://github.com/airbnb/lottie-android) ```(A library that parses Adobe After Effects animations exported as json with Bodymovin and renders them natively on mobile)```
+    7. [Joba](https://github.com/dlew/joda-time-android) ```(A version of Joda-Time built with Android in mind)```
 5. Code Quality
     1. [Android Lint](https://developer.android.com/studio/write/lint.html) ```(The lint tool checks your Android project source files for potential bugs and optimization improvements for correctness, security, performance, usability, accessibility, and internationalization)```
     2. [Checkstyle](https://github.com/checkstyle/checkstyle) ```(Checkstyle is a development tool to help programmers write Java code that adheres to a coding standard. By default it supports the Google Java Style Guide and Sun Code Conventions, but is highly configurable. It can be invoked with an ANT task and a command line program.)```
