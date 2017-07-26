@@ -1,6 +1,7 @@
 package com.hubrickchallenge.android.tools.dagger.modules;
 
 import com.google.firebase.database.FirebaseDatabase;
+import com.hubrickchallenge.android.actions.AppNotificationActions;
 import com.hubrickchallenge.android.activity.main.presenter.MainFragmentPresenter;
 import com.hubrickchallenge.android.activity.main.presenter.MainFragmentPresenterImpl;
 import com.hubrickchallenge.android.activity.main.view.FeedItemAdapterImpl;
@@ -14,8 +15,8 @@ import dagger.Provides;
 public class MainFragmentModule {
 
     @Provides
-    MainFragmentPresenter providesMainFragmentPresenter(Datastore datastore) {
-        return new MainFragmentPresenterImpl(FirebaseDatabase.getInstance().getReference(), datastore);
+    MainFragmentPresenter providesMainFragmentPresenter(Datastore datastore, AppNotificationActions notification) {
+        return new MainFragmentPresenterImpl(FirebaseDatabase.getInstance().getReference(), datastore, notification);
     }
 
     @Provides

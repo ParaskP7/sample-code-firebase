@@ -1,6 +1,7 @@
 package com.hubrickchallenge.android.tools.dagger.components;
 
 import com.hubrickchallenge.android.App;
+import com.hubrickchallenge.android.actions.AppNotificationActions;
 import com.hubrickchallenge.android.activity.BaseActivity;
 import com.hubrickchallenge.android.datastore.Datastore;
 import com.hubrickchallenge.android.tools.dagger.modules.ApplicationModule;
@@ -24,6 +25,8 @@ public interface ApplicationComponent {
     // Downstream components need these exposed the method name does not matter, only the return type.
 
     App application();
+
+    AppNotificationActions notification();
 
     Datastore datastore();
 

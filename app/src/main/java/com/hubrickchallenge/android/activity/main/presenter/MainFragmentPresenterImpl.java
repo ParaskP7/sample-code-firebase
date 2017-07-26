@@ -1,11 +1,14 @@
 package com.hubrickchallenge.android.activity.main.presenter;
 
+import android.support.annotation.Nullable;
+
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseException;
 import com.google.firebase.database.DatabaseReference;
 import com.hannesdorfmann.mosby3.mvp.MvpNullObjectBasePresenter;
+import com.hubrickchallenge.android.actions.NotificationActions;
 import com.hubrickchallenge.android.activity.main.view.MainFragmentView;
 import com.hubrickchallenge.android.datastore.Datastore;
 import com.hubrickchallenge.android.model.FeedItem;
@@ -15,14 +18,16 @@ import timber.log.Timber;
 
 public class MainFragmentPresenterImpl extends MvpNullObjectBasePresenter<MainFragmentView> implements MainFragmentPresenter {
 
-    private final Datastore datastore;
     private final DatabaseReference databaseReference;
+    private final Datastore datastore;
+    private final NotificationActions notification;
 
-    private ChildEventListener childEventListener;
+    @Nullable private ChildEventListener childEventListener;
 
-    public MainFragmentPresenterImpl(DatabaseReference databaseReference, Datastore datastore) {
+    public MainFragmentPresenterImpl(DatabaseReference databaseReference, Datastore datastore, NotificationActions notification) {
         this.databaseReference = databaseReference;
         this.datastore = datastore;
+        this.notification = notification;
     }
 
     @Override
@@ -86,7 +91,18 @@ public class MainFragmentPresenterImpl extends MvpNullObjectBasePresenter<MainFr
     }
 
     private void removeChildEventListener() {
-        databaseReference.removeEventListener(childEventListener);
+        if (childEventListener != null) {
+            databaseReference.removeEventListener(childEventListener);
+        }
+    }
+
+    @Override
+    public void checkAndShowNotification(boolean isFragmentStopped) {
+        if (isFragmentStopped) {
+            notification.show();
+        } else {
+            getView().checkAndShowNotificationButton();
+        }
     }
 
 }

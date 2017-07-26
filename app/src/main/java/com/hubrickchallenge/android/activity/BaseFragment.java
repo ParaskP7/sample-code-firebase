@@ -18,6 +18,7 @@ import com.hannesdorfmann.mosby3.mvp.viewstate.MvpViewStateFragment;
 import com.hannesdorfmann.mosby3.mvp.viewstate.ViewState;
 import com.hubrickchallenge.android.App;
 import com.hubrickchallenge.android.actions.NotificationActions;
+import com.hubrickchallenge.android.actions.SnackbarActions;
 import com.hubrickchallenge.android.tools.dagger.components.BaseFragmentComponent;
 
 import javax.annotation.Nullable;
@@ -89,6 +90,7 @@ public abstract class BaseFragment<
         return view;
     }
 
+    @SuppressWarnings("unchecked")
     private void setDagger() {
         COMPONENT component = constructComponent();
         component.inject(this);
@@ -263,6 +265,10 @@ public abstract class BaseFragment<
 
     protected NotificationActions notification() {
         return application.notification();
+    }
+
+    protected SnackbarActions snackbar() {
+        return application.snackbar();
     }
 
 }

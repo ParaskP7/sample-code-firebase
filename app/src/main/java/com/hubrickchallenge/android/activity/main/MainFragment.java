@@ -38,7 +38,9 @@ public class MainFragment extends BaseFragment<
     @BindView(R.id.notificationButton) AppCompatButton notificationButton;
     @BindView(R.id.recyclerView) RecyclerView recyclerView;
 
-    private boolean isStooped;
+    private boolean isStopped;
+
+    // LIFECYCLE // ************************************************************************************************************************
 
     @Override
     protected int getLayoutId() {
@@ -69,33 +71,28 @@ public class MainFragment extends BaseFragment<
     @Override
     public void onStart() {
         super.onStart();
-        isStooped = false;
+        isStopped = false;
         checkAndShowNotificationButton();
     }
 
     @Override
     public void onStop() {
         super.onStop();
-        isStooped = true;
+        isStopped = true;
     }
+
+    // VIEW // *****************************************************************************************************************************
 
     @Override
     public void displayFeedItem(FeedItem feedItem) {
         Timber.i("Displaying feed item: %s", feedItem);
         getViewState().saveFeedItem(feedItem);
-        showNotification();
+        getPresenter().checkAndShowNotification(isStopped);
         feedItemAdapterImpl.setData(feedItem);
     }
 
-    private void showNotification() {
-        if (isStooped) {
-            notification().show();
-        } else {
-            checkAndShowNotificationButton();
-        }
-    }
-
-    private void checkAndShowNotificationButton() {
+    @Override
+    public void checkAndShowNotificationButton() {
         if (recyclerView.canScrollVertically(DIRECTION_UPWARDS)) {
             notificationButton.setVisibility(View.VISIBLE);
         }
@@ -107,6 +104,8 @@ public class MainFragment extends BaseFragment<
         getViewState().saveFeedItems(feedItems);
         feedItemAdapterImpl.setData(feedItems);
     }
+
+    // CLICK EVENTS // *********************************************************************************************************************
 
     @OnClick(R.id.notificationButton)
     void onNotificationButtonClick() {

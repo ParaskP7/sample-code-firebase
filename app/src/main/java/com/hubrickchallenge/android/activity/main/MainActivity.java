@@ -12,6 +12,8 @@ import butterknife.OnClick;
 
 public class MainActivity extends BaseActivity {
 
+    // LIFECYCLE // ************************************************************************************************************************
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -21,6 +23,8 @@ public class MainActivity extends BaseActivity {
     protected int getLayoutId() {
         return R.layout.activity_main;
     }
+
+    // MENU // *****************************************************************************************************************************
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -36,6 +40,8 @@ public class MainActivity extends BaseActivity {
         }
         return super.onOptionsItemSelected(item);
     }
+
+    // CLICK EVENTS // *********************************************************************************************************************
 
     @OnClick(R.id.fab)
     void onFabClick() {

@@ -9,6 +9,7 @@ import android.support.v7.widget.Toolbar;
 
 import com.hubrickchallenge.android.App;
 import com.hubrickchallenge.android.R;
+import com.hubrickchallenge.android.actions.NotificationActions;
 import com.hubrickchallenge.android.actions.SnackbarActions;
 import com.hubrickchallenge.android.tools.dagger.components.ApplicationComponent;
 
@@ -95,6 +96,10 @@ public abstract class BaseActivity extends AppCompatActivity {
     }
 
     // ACTIONS // **************************************************************************************************************************
+
+    protected NotificationActions notification() {
+        return application.notification();
+    }
 
     protected SnackbarActions snackbar() {
         return application.snackbar();
