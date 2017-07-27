@@ -55,10 +55,12 @@ public class MainFragmentPresenterImpl extends MvpNullObjectBasePresenter<MainFr
                 FeedItemType feedItemType = FeedItemType.fromType(feedItem.getType());
                 if (feedItemType == FeedItemType.ADD) {
                     FeedItem storedFeedItem = datastore.store().feedItem(feedItem);
-                    getView().displayFeedItem(storedFeedItem);
+                    getView().addFeedItem(storedFeedItem);
                 } else {
-                    datastore.update().feedItem(feedItem);
-                    getView().displayFeedItems(datastore.get().allFeedItems());
+                    boolean isSuccessful = datastore.update().feedItem(feedItem);
+                    if (isSuccessful) {
+                        getView().updateFeedItems(datastore.get().allFeedItems());
+                    }
                 }
             }
 

@@ -103,12 +103,12 @@ public class MainFragment extends BaseFragment<
     }
 
     @Override
-    public void displayFeedItem(FeedItem feedItem) {
-        Timber.i("Displaying feed item: %s", feedItem);
+    public void addFeedItem(FeedItem feedItem) {
+        Timber.i("Adding feed item: %s", feedItem);
         getViewState().saveFeedItem(feedItem);
         progressBar.setVisibility(View.GONE);
         getPresenter().checkAndShowNotification(isStopped);
-        feedItemAdapterImpl.setData(feedItem);
+        feedItemAdapterImpl.insertData(feedItem);
     }
 
     @Override
@@ -119,11 +119,11 @@ public class MainFragment extends BaseFragment<
     }
 
     @Override
-    public void displayFeedItems(List<FeedItem> feedItems) {
-        Timber.i("Displaying feed items: %s", feedItems);
+    public void updateFeedItems(List<FeedItem> feedItems) {
+        Timber.i("Updating feed items: %s", feedItems);
         getViewState().saveFeedItems(feedItems);
         progressBar.setVisibility(View.GONE);
-        feedItemAdapterImpl.setData(feedItems);
+        feedItemAdapterImpl.changeData(feedItems);
     }
 
     @Override

@@ -54,8 +54,8 @@ public class FeedItemAdapterImpl extends RecyclerView.Adapter<FeedItemViewHolder
     }
 
     @Override
-    public void setData(FeedItem feedItem) {
-        Timber.v("Updating adapter with feed item");
+    public void insertData(FeedItem feedItem) {
+        Timber.v("Inserting data to adapter.");
         if (!feedItems.contains(feedItem)) {
             feedItems.add(POSITION_TOP, feedItem);
             notifyItemInserted(POSITION_TOP);
@@ -63,8 +63,8 @@ public class FeedItemAdapterImpl extends RecyclerView.Adapter<FeedItemViewHolder
     }
 
     @Override
-    public void setData(List<FeedItem> feedItems) {
-        Timber.v("Updating adapter with feed items");
+    public void changeData(List<FeedItem> feedItems) {
+        Timber.v("Changing adapter with data.");
         this.feedItems = new ArrayList<>(feedItems);
         notifyDataSetChanged();
     }

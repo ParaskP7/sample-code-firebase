@@ -21,7 +21,7 @@ public class MainFragmentViewState implements ViewState<MainFragmentView> {
         Timber.d("Restoring view state");
         if (feedItems != null) {
             Timber.d("Restoring feed items: %s", feedItems);
-            view.displayFeedItems(feedItems);
+            view.updateFeedItems(feedItems);
         }
     }
 

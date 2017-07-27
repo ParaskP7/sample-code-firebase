@@ -6,8 +6,8 @@ import java.util.List;
 
 public interface FeedItemAdapter {
 
-    void setData(FeedItem feedItem);
+    void insertData(FeedItem feedItem);
 
-    void setData(List<FeedItem> feedItems);
+    void changeData(List<FeedItem> feedItems);
 
 }

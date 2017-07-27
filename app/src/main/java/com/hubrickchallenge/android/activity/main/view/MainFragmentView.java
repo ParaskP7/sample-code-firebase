@@ -9,11 +9,11 @@ public interface MainFragmentView extends MvpView {
 
     void showLoading();
 
-    void displayFeedItem(FeedItem feedItem);
+    void addFeedItem(FeedItem feedItem);
 
     void checkAndShowNotificationButton();
 
-    void displayFeedItems(List<FeedItem> feedItems);
+    void updateFeedItems(List<FeedItem> feedItems);
 
     void showLoadingError();
 
