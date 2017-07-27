@@ -54,7 +54,7 @@ gradlew uninstallDebug | gradlew installDebug
 Or faster yet and targeting a specific device (in our case an emulator)!
 
 ```
-adb -s emulator-5554 uninstall com.hubrickchallenge.android | adb -s emulator-5554 install app\build\outputs\apk\app-debug.apk
+adb -s emulator-5554 uninstall com.hubrickchallenge.android | adb -s emulator-5554 install app\build\outputs\apk\debug\app-debug.apk
 ```
 
 ![alt tag](https://github.com/ParaskP7/sample-code-firebase/blob/master/demo.jpg)
