@@ -4,7 +4,6 @@
 
     <string name="content_description__avatar_image_view">Avatar</string>
     <string name="content_description__headline_image_view">Headline</string>
-    <string name="content_description__like_image_view">Like</string>
     <string name="content_description__comment_image_view">Comment</string>
     <string name="content_description__share_image_view">Share</string>
 

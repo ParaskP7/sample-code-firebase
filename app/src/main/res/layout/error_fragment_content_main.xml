@@ -46,7 +46,6 @@
         app:lottie_autoPlay="false"
         app:lottie_fileName="animation/lottie_whale.json"
         app:lottie_loop="true"
-        tools:visibility="visible"
         tools:ignore="MissingRegistered"/>
 
 </merge>

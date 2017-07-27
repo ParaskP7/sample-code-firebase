@@ -6,6 +6,7 @@ import android.support.v7.widget.AppCompatTextView;
 import android.view.View;
 import android.webkit.URLUtil;
 
+import com.airbnb.lottie.LottieAnimationView;
 import com.hubrickchallenge.android.R;
 import com.hubrickchallenge.android.model.FeedItem;
 import com.hubrickchallenge.android.model.FeedItemType;
@@ -15,6 +16,8 @@ import com.hubrickchallenge.android.util.time.TimeUtil;
 
 import butterknife.BindColor;
 import butterknife.BindView;
+import butterknife.OnClick;
+import timber.log.Timber;
 
 class FeedItemViewHolder extends InjectedViewHolder {
 
@@ -33,11 +36,9 @@ class FeedItemViewHolder extends InjectedViewHolder {
     @BindView(R.id.plainTitleTextView) AppCompatTextView plainTitleTextView;
     @BindView(R.id.plainContentPreviewTextView) AppCompatTextView plainContentPreviewTextView;
 
-    @BindView(R.id.likeImageView) AppCompatImageView likeImageView;
+    @BindView(R.id.likeLottieAnimationView) LottieAnimationView likeLottieAnimationView;
     @BindView(R.id.likeTextView) AppCompatTextView likeTextView;
-    @BindView(R.id.commentImageView) AppCompatImageView commentImageView;
     @BindView(R.id.commentTextView) AppCompatTextView commentTextView;
-    @BindView(R.id.shareImageView) AppCompatImageView shareImageView;
     @BindView(R.id.shareTextView) AppCompatTextView shareTextView;
 
     FeedItemViewHolder(View itemView) {
@@ -94,6 +95,22 @@ class FeedItemViewHolder extends InjectedViewHolder {
         likeTextView.setText(String.valueOf(feedItem.getPayload().getStats().getReactionStats().getCounts().getLike()));
         commentTextView.setText(String.valueOf(feedItem.getPayload().getStats().getCommentStats().getCount()));
         shareTextView.setText(String.valueOf(feedItem.getPayload().getStats().getReactionStats().getCounts().getShare()));
+    }
+
+    @OnClick(R.id.likeLottieAnimationView)
+    void onLikeLottieAnimationViewClick() {
+        likeLottieAnimationView.playAnimation();
+        increaseNumberOfLikes();
+    }
+
+    private void increaseNumberOfLikes() {
+        String numberOfLikesAsString = String.valueOf(likeTextView.getText());
+        try {
+            Integer numberOfLikes = Integer.parseInt(numberOfLikesAsString);
+            likeTextView.setText(String.valueOf(numberOfLikes + 1));
+        } catch (NumberFormatException nfe) {
+            Timber.w(nfe, "The number of likes is not a valid number. [Likes: %]", numberOfLikesAsString);
+        }
     }
 
 }
