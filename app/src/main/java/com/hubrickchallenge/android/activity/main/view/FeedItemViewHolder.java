@@ -52,7 +52,7 @@ class FeedItemViewHolder extends InjectedViewHolder {
 
     private void setCardBackground(FeedItem feedItem) {
         FeedItemType feedItemType = FeedItemType.fromType(feedItem.getType());
-        if (feedItemType != feedItemType.DELETE) {
+        if (feedItemType != FeedItemType.DELETE) {
             cardConstraintLayout.setBackgroundColor(background);
             iconImageView.setImageDrawable(ContextCompat.getDrawable(application, R.drawable.test_icon_image_view));
             likeImageView.setImageDrawable(ContextCompat.getDrawable(application, R.drawable.test_like_button_image_view));
