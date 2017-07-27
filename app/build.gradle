@@ -71,6 +71,7 @@ dependencies {
     implementation deps.rx.firebase
     implementation deps.event.bus
     implementation deps.logging.timber
+    implementation deps.image.glide
     implementation deps.animation.lottie
     implementation deps.other.jodaTime
     implementation(deps.other.findbugs, {
