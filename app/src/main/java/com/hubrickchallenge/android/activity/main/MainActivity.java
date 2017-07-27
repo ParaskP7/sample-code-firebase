@@ -8,9 +8,13 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.hubrickchallenge.android.R;
+import com.hubrickchallenge.android.actions.event.FeedItemEvent;
 import com.hubrickchallenge.android.activity.BaseActivity;
 
+import org.greenrobot.eventbus.Subscribe;
+
 import butterknife.OnClick;
+import timber.log.Timber;
 
 public class MainActivity extends BaseActivity {
 
@@ -51,6 +55,13 @@ public class MainActivity extends BaseActivity {
             return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    // BUS EVENTS // ***********************************************************************************************************************
+
+    @Subscribe
+    public void handleFeedItemEvent(FeedItemEvent feedItemEvent) {
+        Timber.d("Feed item event.");
     }
 
     // CLICK EVENTS // *********************************************************************************************************************

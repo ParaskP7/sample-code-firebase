@@ -63,6 +63,7 @@ dependencies {
     compile deps.rx.java
     compile deps.rx.android
     compile deps.rx.firebase
+    compile deps.event.bus
     compile deps.logging.timber
     compile deps.animation.lottie
     compile deps.other.jodaTime

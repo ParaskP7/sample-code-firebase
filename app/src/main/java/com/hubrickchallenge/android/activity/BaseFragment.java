@@ -17,6 +17,7 @@ import com.hannesdorfmann.mosby3.mvp.delegate.MvpViewStateDelegateCallback;
 import com.hannesdorfmann.mosby3.mvp.viewstate.MvpViewStateFragment;
 import com.hannesdorfmann.mosby3.mvp.viewstate.ViewState;
 import com.hubrickchallenge.android.App;
+import com.hubrickchallenge.android.actions.EventActions;
 import com.hubrickchallenge.android.actions.NotificationActions;
 import com.hubrickchallenge.android.actions.SnackbarActions;
 import com.hubrickchallenge.android.tools.dagger.components.BaseFragmentComponent;
@@ -128,6 +129,7 @@ public abstract class BaseFragment<
     public void onStart() { // After that the activity is started.
         super.onStart();
         getMvpDelegate().onStart();
+        event().register(this);
         Timber.d("%s started.", getClass().getSimpleName());
     }
 
@@ -155,6 +157,7 @@ public abstract class BaseFragment<
     @Override
     public void onStop() { // Prior that the activity is stopped.
         Timber.d("%s stopped.", getClass().getSimpleName());
+        event().unregister(this);
         super.onStop();
         getMvpDelegate().onStop();
     }
@@ -268,6 +271,10 @@ public abstract class BaseFragment<
     }
 
     // ACTIONS // **************************************************************************************************************************
+
+    protected EventActions event() {
+        return application.event();
+    }
 
     protected NotificationActions notification() {
         return application.notification();

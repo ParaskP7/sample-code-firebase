@@ -8,6 +8,7 @@ import android.widget.ProgressBar;
 
 import com.airbnb.lottie.LottieAnimationView;
 import com.hubrickchallenge.android.R;
+import com.hubrickchallenge.android.actions.event.FeedItemEvent;
 import com.hubrickchallenge.android.activity.BaseFragment;
 import com.hubrickchallenge.android.activity.main.presenter.MainFragmentPresenter;
 import com.hubrickchallenge.android.activity.main.view.FeedItemAdapterImpl;
@@ -17,6 +18,8 @@ import com.hubrickchallenge.android.model.FeedItem;
 import com.hubrickchallenge.android.tools.dagger.components.ComponentFactory;
 import com.hubrickchallenge.android.tools.dagger.components.MainFragmentComponent;
 import com.hubrickchallenge.android.tools.view.ButterKnifeActions;
+
+import org.greenrobot.eventbus.Subscribe;
 
 import java.util.List;
 
@@ -132,6 +135,13 @@ public class MainFragment extends BaseFragment<
         progressBar.setVisibility(GONE);
         lottieAnimationView.playAnimation();
         ButterKnife.apply(errorViews, ButterKnifeActions.SET_VISIBILITY_TO_VISIBLE);
+    }
+
+    // BUS EVENTS // ***********************************************************************************************************************
+
+    @Subscribe
+    public void handleFeedItemEvent(FeedItemEvent feedItemEvent) {
+        Timber.d("Feed item event.");
     }
 
     // CLICK EVENTS // *********************************************************************************************************************

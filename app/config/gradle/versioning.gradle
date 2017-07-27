@@ -42,6 +42,9 @@ ext.versions = [
         rxJava          : '2.1.2',
         rxFirebase      : '0.0.16',
 
+        // Event
+        eventbus        : '3.0.0',
+
         // Logging
         timber          : '4.5.1',
 
@@ -88,6 +91,9 @@ ext.deps = [
                 'java'    : "io.reactivex.rxjava2:rxjava:$versions.rxJava",
                 'android' : "io.reactivex.rxjava2:rxandroid:$versions.rxAndroid",
                 'firebase': "com.kelvinapps:rxfirebase:$versions.rxFirebase",
+        ],
+        'event'      : [
+                'bus': "org.greenrobot:eventbus:$versions.eventbus"
         ],
         'logging'    : [
                 'timber': "com.jakewharton.timber:timber:$versions.timber",

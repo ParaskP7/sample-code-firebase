@@ -10,6 +10,7 @@ import android.support.v7.widget.Toolbar;
 
 import com.hubrickchallenge.android.App;
 import com.hubrickchallenge.android.R;
+import com.hubrickchallenge.android.actions.EventActions;
 import com.hubrickchallenge.android.actions.NotificationActions;
 import com.hubrickchallenge.android.actions.SnackbarActions;
 import com.hubrickchallenge.android.tools.dagger.components.ApplicationComponent;
@@ -74,6 +75,7 @@ public abstract class BaseActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
+        event().register(this);
         Timber.d("%s started.", getClass().getSimpleName());
     }
 
@@ -105,6 +107,7 @@ public abstract class BaseActivity extends AppCompatActivity {
     @Override
     protected void onStop() {
         Timber.d("%s stopped.", getClass().getSimpleName());
+        event().unregister(this);
         super.onStop();
     }
 
@@ -115,6 +118,10 @@ public abstract class BaseActivity extends AppCompatActivity {
     }
 
     // ACTIONS // **************************************************************************************************************************
+
+    protected EventActions event() {
+        return application.event();
+    }
 
     protected NotificationActions notification() {
         return application.notification();
