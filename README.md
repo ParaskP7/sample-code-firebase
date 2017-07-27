@@ -8,6 +8,7 @@ The below listed skills are the main focus:
     2. [Recycler View](https://developer.android.com/reference/android/support/v7/widget/RecyclerView.html) ```(A flexible view for providing a limited window into a large data set)```
     3. [Card View](https://developer.android.com/reference/android/support/v7/widget/CardView.html) ```(A FrameLayout with a rounded corner background and shadow)```
     4. [Multi Dex](https://developer.android.com/reference/android/support/multidex/MultiDex.html) ```(Patches the application context class loader in order to load classes from more than one dex file)```
+    5. [Vector Drawables](https://developer.android.com/training/material/drawables.html#VectorDrawables) ```(In Android 5.0 (API Level 21) and above, you can define vector drawables, which scale without losing definition)```
 2. Firebase
     1. [Firebase Database](https://firebase.google.com/docs/database/) ```(Store and sync data with our NoSQL cloud database. Data is synced across all clients in realtime, and remains available when your app goes offline)```
 3. Database

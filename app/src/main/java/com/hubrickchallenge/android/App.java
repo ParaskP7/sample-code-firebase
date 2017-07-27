@@ -1,6 +1,7 @@
 package com.hubrickchallenge.android;
 
 import android.support.multidex.MultiDexApplication;
+import android.support.v7.app.AppCompatDelegate;
 
 import com.hubrickchallenge.android.actions.AppEventActions;
 import com.hubrickchallenge.android.actions.AppNotificationActions;
@@ -21,6 +22,10 @@ import timber.log.Timber;
 public class App extends MultiDexApplication {
 
     private static ApplicationComponent applicationComponent;
+
+    static {
+        AppCompatDelegate.setCompatVectorFromResourcesEnabled(true); // NOTE: This enables the "proxy" trick on the vector images.
+    }
 
     public static ApplicationComponent getApplicationComponent() {
         return applicationComponent;
