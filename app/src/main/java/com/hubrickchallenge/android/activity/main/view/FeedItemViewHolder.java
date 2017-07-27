@@ -1,7 +1,6 @@
 package com.hubrickchallenge.android.activity.main.view;
 
 import android.support.constraint.ConstraintLayout;
-import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.AppCompatImageView;
 import android.support.v7.widget.AppCompatTextView;
 import android.view.View;
@@ -58,14 +57,8 @@ class FeedItemViewHolder extends InjectedViewHolder {
         FeedItemType feedItemType = FeedItemType.fromType(feedItem.getType());
         if (feedItemType != FeedItemType.DELETE) {
             cardConstraintLayout.setBackgroundColor(background);
-            likeImageView.setImageDrawable(ContextCompat.getDrawable(application, R.drawable.test_like_button_image_view));
-            commentImageView.setImageDrawable(ContextCompat.getDrawable(application, R.drawable.test_comment_button_image_view));
-            shareImageView.setImageDrawable(ContextCompat.getDrawable(application, R.drawable.test_share_button_image_view));
         } else {
             cardConstraintLayout.setBackgroundColor(deletedBackground);
-            likeImageView.setImageDrawable(ContextCompat.getDrawable(application, R.drawable.test_like_button_image_view_deleted));
-            commentImageView.setImageDrawable(ContextCompat.getDrawable(application, R.drawable.test_comment_button_image_view_deleted));
-            shareImageView.setImageDrawable(ContextCompat.getDrawable(application, R.drawable.test_share_button_image_view_deleted));
         }
     }
 

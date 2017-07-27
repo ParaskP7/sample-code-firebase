@@ -17,12 +17,6 @@
     <issue id="IconLocation">
         <ignore path="src\main\res\drawable\default_avatar_image_view.png"/>
         <ignore path="src\main\res\drawable\default_headline_image_view.png"/>
-        <ignore path="src\main\res\drawable\test_like_button_image_view.png"/>
-        <ignore path="src\main\res\drawable\test_like_button_image_view_deleted.png"/>
-        <ignore path="src\main\res\drawable\test_comment_button_image_view.png"/>
-        <ignore path="src\main\res\drawable\test_comment_button_image_view_deleted.png"/>
-        <ignore path="src\main\res\drawable\test_share_button_image_view.png"/>
-        <ignore path="src\main\res\drawable\test_share_button_image_view_deleted.png"/>
     </issue>
 
 </lint>
