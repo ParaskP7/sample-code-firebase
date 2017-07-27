@@ -3,30 +3,32 @@ This repository contains sample code. Its purpose being, to quickly demonstrate 
 
 The below listed skills are the main focus:
 
-1. Architectural Pattern
-    1. [Mosby MVP](https://github.com/sockeqwe/mosby) ```(Helper MVP library)```
-2. Android Support
+1. Android Support
     1. [Constraint Layout](https://developer.android.com/reference/android/support/constraint/ConstraintLayout.html) ```(A ViewGroup which allows you to position and size widgets in a flexible way)```
     2. [Recycler View](https://developer.android.com/reference/android/support/v7/widget/RecyclerView.html) ```(A flexible view for providing a limited window into a large data set)```
     3. [Card View](https://developer.android.com/reference/android/support/v7/widget/CardView.html) ```(A FrameLayout with a rounded corner background and shadow)```
     4. [Multi Dex](https://developer.android.com/reference/android/support/multidex/MultiDex.html) ```(Patches the application context class loader in order to load classes from more than one dex file)```
-3. Firebase
+2. Firebase
     1. [Firebase Database](https://firebase.google.com/docs/database/) ```(Store and sync data with our NoSQL cloud database. Data is synced across all clients in realtime, and remains available when your app goes offline)```
-4. Libraries
+3. Database
+    1. [Realm](https://github.com/realm/realm-java) ```(Realm is a mobile database: a replacement for SQLite & ORMs)```
+4. Architectural Pattern
+    1. [Mosby MVP](https://github.com/sockeqwe/mosby) ```(Helper MVP library)```
+5. Libraries
     1. [Dagger](https://github.com/google/dagger) ```(A fast dependency injector for Android and Java)```
     2. [Butter Knife](https://github.com/JakeWharton/butterknife) ```(Bind Android views and callbacks to fields and methods)```
-    3. [RxJava](https://github.com/ReactiveX/RxJava) ```(RxJava – Reactive Extensions for the JVM – a library for composing asynchronous and event-based programs using observable sequences for the Java VM)```
-    4. [Realm](https://github.com/realm/realm-java) ```(Realm is a mobile database: a replacement for SQLite & ORMs)```
+    3. [RxJava](https://github.com/ReactiveX/RxJava) ```(A library for composing asynchronous and event-based programs using observable sequences for the Java VM)```
+    4. [Event Bus](https://github.com/greenrobot/EventBus) ```(EventBus is a publish/subscribe event bus optimized for Android)```
     5. [Timber](https://github.com/JakeWharton/timber) ```(A logger with a small, extensible API which provides utility on top of Android's normal Log class)```
     6. [Lottie](https://github.com/airbnb/lottie-android) ```(A library that parses Adobe After Effects animations exported as json with Bodymovin and renders them natively on mobile)```
     7. [Joba](https://github.com/dlew/joda-time-android) ```(A version of Joda-Time built with Android in mind)```
-5. Code Quality
+6. Code Quality
     1. [Android Lint](https://developer.android.com/studio/write/lint.html) ```(The lint tool checks your Android project source files for potential bugs and optimization improvements for correctness, security, performance, usability, accessibility, and internationalization)```
     2. [Checkstyle](https://github.com/checkstyle/checkstyle) ```(Checkstyle is a development tool to help programmers write Java code that adheres to a coding standard. By default it supports the Google Java Style Guide and Sun Code Conventions, but is highly configurable. It can be invoked with an ANT task and a command line program.)```
     3. [PMD](https://pmd.github.io/) ```(PMD is a source code analyzer)```
     4. [Findbugs](http://findbugs.sourceforge.net/) ```(A program which uses static analysis to look for bugs in Java code)```
     5. [Jacoco](https://github.com/jacoco/jacoco) ```(JaCoCo - Java Code Coverage Library)```
-6. Tests
+7. Tests
     1. [Espresso](https://google.github.io/android-testing-support-library/docs/espresso/) ```(Espresso to write concise, beautiful, and reliable Android UI tests)```
     2. [JUnit](https://github.com/junit-team/junit4) ```(A programmer-oriented testing framework for Java)```
 
