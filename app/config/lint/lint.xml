@@ -24,8 +24,5 @@
         <ignore path="src\main\res\drawable\test_share_button_image_view.png"/>
         <ignore path="src\main\res\drawable\test_share_button_image_view_deleted.png"/>
     </issue>
-    <issue id="RtlHardcoded">
-        <ignore path="src\main\res\layout\item_feed.xml"/>
-    </issue>
 
 </lint>

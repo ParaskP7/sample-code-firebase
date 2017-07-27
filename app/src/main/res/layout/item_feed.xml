@@ -26,7 +26,7 @@
             app:layout_constraintTop_toTopOf="parent"
             tools:ignore="UnusedIds">
 
-            <ImageView
+            <android.support.v7.widget.AppCompatImageView
                 android:id="@+id/avatarImageView"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
@@ -41,7 +41,7 @@
                 android:paddingLeft="10dp"
                 android:paddingRight="10dp">
 
-                <TextView
+                <android.support.v7.widget.AppCompatTextView
                     android:id="@+id/authorDisplayNameTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -52,7 +52,7 @@
                     android:textStyle="bold"
                     tools:ignore="SelectableText"/>
 
-                <TextView
+                <android.support.v7.widget.AppCompatTextView
                     android:id="@+id/updatedAtTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -66,7 +66,7 @@
 
         </LinearLayout>
 
-        <ImageView
+        <android.support.v7.widget.AppCompatImageView
             android:id="@+id/headlineImageView"
             android:layout_width="wrap_content"
             android:layout_height="250dp"
@@ -76,7 +76,7 @@
             app:layout_constraintTop_toBottomOf="@+id/topLinearLayout"
             android:contentDescription="@string/content_description__headline_image_view"/>
 
-        <TextView
+        <android.support.v7.widget.AppCompatTextView
             android:id="@+id/plainTitleTextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -95,7 +95,7 @@
             app:layout_constraintTop_toBottomOf="@+id/headlineImageView"
             tools:ignore="SelectableText"/>
 
-        <TextView
+        <android.support.v7.widget.AppCompatTextView
             android:id="@+id/plainContentPreviewTextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -123,7 +123,7 @@
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/plainContentPreviewTextView">
 
-            <ImageView
+            <android.support.v7.widget.AppCompatImageView
                 android:id="@+id/likeImageView"
                 android:layout_width="25dp"
                 android:layout_height="25dp"
@@ -131,7 +131,7 @@
                 android:src="@drawable/test_like_button_image_view"
                 android:contentDescription="@string/content_description__like_image_view"/>
 
-            <TextView
+            <android.support.v7.widget.AppCompatTextView
                 android:id="@+id/likeTextView"
                 android:layout_width="20dp"
                 android:layout_height="25dp"
@@ -140,16 +140,17 @@
                 android:textSize="18sp"
                 tools:ignore="SelectableText"/>
 
-            <ImageView
+            <android.support.v7.widget.AppCompatImageView
                 android:id="@+id/commentImageView"
                 android:layout_width="25dp"
                 android:layout_height="25dp"
                 android:layout_gravity="center"
                 android:layout_marginLeft="15dp"
                 android:src="@drawable/test_comment_button_image_view"
-                android:contentDescription="@string/content_description__comment_image_view"/>
+                android:contentDescription="@string/content_description__comment_image_view"
+                tools:ignore="RtlHardcoded"/>
 
-            <TextView
+            <android.support.v7.widget.AppCompatTextView
                 android:id="@+id/commentTextView"
                 android:layout_width="20dp"
                 android:layout_height="25dp"
@@ -158,16 +159,17 @@
                 android:textSize="18sp"
                 tools:ignore="SelectableText"/>
 
-            <ImageView
+            <android.support.v7.widget.AppCompatImageView
                 android:id="@+id/shareImageView"
                 android:layout_width="25dp"
                 android:layout_height="25dp"
                 android:layout_gravity="center"
                 android:layout_marginLeft="15dp"
                 android:src="@drawable/test_share_button_image_view"
-                android:contentDescription="@string/content_description__share_image_view"/>
+                android:contentDescription="@string/content_description__share_image_view"
+                tools:ignore="RtlHardcoded"/>
 
-            <TextView
+            <android.support.v7.widget.AppCompatTextView
                 android:id="@+id/shareTextView"
                 android:layout_width="20dp"
                 android:layout_height="25dp"

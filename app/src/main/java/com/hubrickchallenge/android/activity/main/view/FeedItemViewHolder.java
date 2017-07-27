@@ -2,10 +2,10 @@ package com.hubrickchallenge.android.activity.main.view;
 
 import android.support.constraint.ConstraintLayout;
 import android.support.v4.content.ContextCompat;
+import android.support.v7.widget.AppCompatImageView;
+import android.support.v7.widget.AppCompatTextView;
 import android.view.View;
 import android.webkit.URLUtil;
-import android.widget.ImageView;
-import android.widget.TextView;
 
 import com.hubrickchallenge.android.R;
 import com.hubrickchallenge.android.model.FeedItem;
@@ -26,20 +26,20 @@ class FeedItemViewHolder extends InjectedViewHolder {
 
     @BindView(R.id.cardConstraintLayout) ConstraintLayout cardConstraintLayout;
 
-    @BindView(R.id.avatarImageView) ImageView avatarImageView;
-    @BindView(R.id.authorDisplayNameTextView) TextView authorDisplayNameTextView;
-    @BindView(R.id.updatedAtTextView) TextView updatedAtTextView;
+    @BindView(R.id.avatarImageView) AppCompatImageView avatarImageView;
+    @BindView(R.id.authorDisplayNameTextView) AppCompatTextView authorDisplayNameTextView;
+    @BindView(R.id.updatedAtTextView) AppCompatTextView updatedAtTextView;
 
-    @BindView(R.id.headlineImageView) ImageView headlineImageView;
-    @BindView(R.id.plainTitleTextView) TextView plainTitleTextView;
-    @BindView(R.id.plainContentPreviewTextView) TextView plainContentPreviewTextView;
+    @BindView(R.id.headlineImageView) AppCompatImageView headlineImageView;
+    @BindView(R.id.plainTitleTextView) AppCompatTextView plainTitleTextView;
+    @BindView(R.id.plainContentPreviewTextView) AppCompatTextView plainContentPreviewTextView;
 
-    @BindView(R.id.likeImageView) ImageView likeImageView;
-    @BindView(R.id.likeTextView) TextView likeTextView;
-    @BindView(R.id.commentImageView) ImageView commentImageView;
-    @BindView(R.id.commentTextView) TextView commentTextView;
-    @BindView(R.id.shareImageView) ImageView shareImageView;
-    @BindView(R.id.shareTextView) TextView shareTextView;
+    @BindView(R.id.likeImageView) AppCompatImageView likeImageView;
+    @BindView(R.id.likeTextView) AppCompatTextView likeTextView;
+    @BindView(R.id.commentImageView) AppCompatImageView commentImageView;
+    @BindView(R.id.commentTextView) AppCompatTextView commentTextView;
+    @BindView(R.id.shareImageView) AppCompatImageView shareImageView;
+    @BindView(R.id.shareTextView) AppCompatTextView shareTextView;
 
     FeedItemViewHolder(View itemView) {
         super(itemView);
