@@ -31,6 +31,7 @@ import timber.log.Timber;
 
 import static android.view.View.GONE;
 import static android.view.View.VISIBLE;
+import static com.hubrickchallenge.android.activity.main.view.FeedItemAdapterImpl.POSITION_TOP;
 
 public class MainFragment extends BaseFragment<
         MainFragmentComponent,
@@ -39,7 +40,7 @@ public class MainFragment extends BaseFragment<
         MainFragmentViewState>
         implements MainFragmentView {
 
-    private static final int DIRECTION_UPWARDS = 0;
+    private static final int DIRECTION_UPWARDS = 1;
 
     @Inject FeedItemAdapterImpl feedItemAdapterImpl;
 
@@ -73,7 +74,7 @@ public class MainFragment extends BaseFragment<
     @Override
     protected void onFirstCreate() {
         super.onFirstCreate();
-        getPresenter().subscribeToFeedItems();
+        getPresenter().retrieveFeedItems();
     }
 
     private void setRecyclerView() {
@@ -84,7 +85,6 @@ public class MainFragment extends BaseFragment<
     public void onStart() {
         super.onStart();
         isStopped = false;
-        checkAndShowNotificationButton();
     }
 
     @Override
@@ -107,8 +107,8 @@ public class MainFragment extends BaseFragment<
         Timber.i("Adding feed item: %s", feedItem);
         getViewState().saveFeedItem(feedItem);
         progressBar.setVisibility(View.GONE);
-        getPresenter().checkAndShowNotification(isStopped);
         feedItemAdapterImpl.insertData(feedItem);
+        getPresenter().checkAndShowNotification(isStopped);
     }
 
     @Override
@@ -139,14 +139,14 @@ public class MainFragment extends BaseFragment<
     @OnClick(R.id.notificationButton)
     void onNotificationButtonClick() {
         notificationButton.setVisibility(View.GONE);
-        recyclerView.smoothScrollToPosition(DIRECTION_UPWARDS);
+        recyclerView.smoothScrollToPosition(POSITION_TOP);
     }
 
     @OnClick(R.id.reloadButton)
     void onReloadButtonClick() {
         Timber.i("Reload button clicked.");
         lottieAnimationView.cancelAnimation();
-        getPresenter().resubscribeToFeedItems();
+        getPresenter().retrieveFeedItems();
     }
 
 }

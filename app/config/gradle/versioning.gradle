@@ -28,7 +28,7 @@ ext.versions = [
         multiDex        : '1.0.2',
 
         // Firebase
-        firebaseDatabase: '11.0.2',
+        firebaseDatabase: '11.0.4',
 
         // Architecture
         mosbyMvp        : '3.0.4',
@@ -40,6 +40,7 @@ ext.versions = [
         // ReactiveX
         rxAndroid       : '2.0.1',
         rxJava          : '2.1.2',
+        rxFirebase      : '0.0.16',
 
         // Logging
         timber          : '4.5.1',
@@ -84,13 +85,14 @@ ext.deps = [
                 'compiler': "com.jakewharton:butterknife-compiler:$versions.butterKnife",
         ],
         'rx'         : [
-                'java'   : "io.reactivex.rxjava2:rxjava:$versions.rxJava",
-                'android': "io.reactivex.rxjava2:rxandroid:$versions.rxAndroid",
+                'java'    : "io.reactivex.rxjava2:rxjava:$versions.rxJava",
+                'android' : "io.reactivex.rxjava2:rxandroid:$versions.rxAndroid",
+                'firebase': "com.kelvinapps:rxfirebase:$versions.rxFirebase",
         ],
         'logging'    : [
                 'timber': "com.jakewharton.timber:timber:$versions.timber",
         ],
-        'animation'    : [
+        'animation'  : [
                 'lottie': "com.airbnb.android:lottie:$versions.lottie",
         ],
         'other'      : [

@@ -39,6 +39,10 @@ android {
         }
     }
 
+    packagingOptions {
+        pickFirst 'META-INF/rxjava.properties'
+    }
+
 }
 
 dependencies {
@@ -58,6 +62,7 @@ dependencies {
     annotationProcessor deps.butterKnife.compiler
     compile deps.rx.java
     compile deps.rx.android
+    compile deps.rx.firebase
     compile deps.logging.timber
     compile deps.animation.lottie
     compile deps.other.jodaTime
