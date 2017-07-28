@@ -10,7 +10,7 @@ import org.junit.runner.RunWith;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @RunWith(PreconfiguredRobolectricTestRunner.class)
-public class FeedItemAdapterImplTest extends GeneralTestHelper {
+public class FeedItemAdapterImplRobolectricTest extends GeneralTestHelper {
 
     private FeedItemAdapterImpl feedItemAdapter;
 

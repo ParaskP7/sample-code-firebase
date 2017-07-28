@@ -3,6 +3,7 @@
 <resources>
 
     <string name="app_name">Firebase</string>
+    <string name="activity_label">Feeds</string>
 
     <string name="action_settings">Settings</string>
 
