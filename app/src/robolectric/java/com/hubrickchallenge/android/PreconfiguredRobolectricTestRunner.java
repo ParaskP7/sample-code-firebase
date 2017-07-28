@@ -26,7 +26,9 @@ public class PreconfiguredRobolectricTestRunner extends RobolectricTestRunner {
     @Override
     protected Config buildGlobalConfig() {
         return new Config.Builder()
-                .setSdk(SDK_API_LEVEL_TO_EMULATE).build();
+                .setSdk(SDK_API_LEVEL_TO_EMULATE)
+                .setManifest(Config.NONE)
+                .build();
     }
 
 }

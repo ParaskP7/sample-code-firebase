@@ -50,6 +50,18 @@ android {
         targetCompatibility JavaVersion.VERSION_1_8
     }
 
+    testOptions {
+        unitTests.all {
+            systemProperty 'robolectric.logging', 'stdout'
+            systemProperty 'robolectric.logging.enabled', 'true'
+            // Print test details in the terminal (or CI).
+            testLogging {
+                events 'passed', 'skipped', 'failed', 'standardOut', 'standardError'
+                exceptionFormat 'full'
+            }
+        }
+    }
+
     sourceSets {
         def ROBOLECTRIC_ONLY_BUILD_TYPE_UNIT_TESTS = 'src/robolectric/java'
 
