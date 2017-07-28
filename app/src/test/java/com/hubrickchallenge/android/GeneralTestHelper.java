@@ -146,4 +146,10 @@ public class GeneralTestHelper {
         return testFeedItems;
     }
 
+    protected List<FeedItem> getTestFeedItems(FeedItem testFeedItem) {
+        ArrayList<FeedItem> testFeedItems = new ArrayList<>();
+        testFeedItems.add(testFeedItem);
+        return testFeedItems;
+    }
+
 }

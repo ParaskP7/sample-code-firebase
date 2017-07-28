@@ -50,6 +50,12 @@ android {
         targetCompatibility JavaVersion.VERSION_1_8
     }
 
+    sourceSets {
+        def ROBOLECTRIC_ONLY_BUILD_TYPE_UNIT_TESTS = 'src/robolectric/java'
+
+        testDebug.java.srcDirs += [ROBOLECTRIC_ONLY_BUILD_TYPE_UNIT_TESTS]
+    }
+
 }
 
 dependencies {
@@ -80,10 +86,11 @@ dependencies {
         exclude group: 'com.google.code.findbugs', module: 'jsr305'
     })
 
+    testImplementation deps.mock.mockito
     testImplementation deps.test.junit
     testImplementation deps.test.jodaTime
     testImplementation deps.test.assertJ
-    testImplementation deps.mock.mockito
+    testImplementation deps.robolectric.test
 
     androidTestImplementation(deps.androidTest.espresso, {
         exclude group: 'com.android.support', module: 'support-annotations'

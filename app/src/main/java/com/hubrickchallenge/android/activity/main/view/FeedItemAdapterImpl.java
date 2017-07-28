@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 
 import com.hubrickchallenge.android.R;
 import com.hubrickchallenge.android.model.FeedItem;
+import com.hubrickchallenge.android.util.testing.ForTestingPurposes;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -67,6 +68,11 @@ public class FeedItemAdapterImpl extends RecyclerView.Adapter<FeedItemViewHolder
         Timber.v("Changing adapter with data.");
         this.feedItems = new ArrayList<>(feedItems);
         notifyDataSetChanged();
+    }
+
+    @ForTestingPurposes
+    List<FeedItem> getData() {
+        return feedItems;
     }
 
 }
