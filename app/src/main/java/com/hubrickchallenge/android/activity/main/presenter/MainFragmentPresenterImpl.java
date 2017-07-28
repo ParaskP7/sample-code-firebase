@@ -1,39 +1,39 @@
 package com.hubrickchallenge.android.activity.main.presenter;
 
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.annotation.VisibleForTesting;
 
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseReference;
 import com.hannesdorfmann.mosby3.mvp.MvpNullObjectBasePresenter;
 import com.hubrickchallenge.android.actions.NotificationActions;
 import com.hubrickchallenge.android.activity.main.view.MainFragmentView;
 import com.hubrickchallenge.android.datastore.Datastore;
 import com.hubrickchallenge.android.model.FeedItem;
 import com.hubrickchallenge.android.model.FeedItemType;
-import com.hubrickchallenge.android.model.mapper.Mapper;
-import com.kelvinapps.rxfirebase.RxFirebaseChildEvent;
-import com.kelvinapps.rxfirebase.RxFirebaseDatabase;
+import com.hubrickchallenge.android.service.FirebaseService;
 
 import rx.Subscription;
 import timber.log.Timber;
 
 public class MainFragmentPresenterImpl extends MvpNullObjectBasePresenter<MainFragmentView> implements MainFragmentPresenter {
 
-    private final DatabaseReference databaseReference;
-    private final Mapper<RxFirebaseChildEvent<DataSnapshot>, FeedItem> feedItemMapper;
-
+    private final FirebaseService firebaseService;
     private final Datastore datastore;
     private final NotificationActions notification;
 
-    @Nullable private Subscription subscription;
+    @VisibleForTesting
+    @Nullable Subscription subscription;
 
-    public MainFragmentPresenterImpl(DatabaseReference databaseReference,
-                                     Mapper<RxFirebaseChildEvent<DataSnapshot>, FeedItem> feedItemMapper, Datastore datastore,
-                                     NotificationActions notification) {
-        this.databaseReference = databaseReference;
-        this.feedItemMapper = feedItemMapper;
+    public MainFragmentPresenterImpl(FirebaseService firebaseService, Datastore datastore, NotificationActions notification) {
+        this.firebaseService = firebaseService;
         this.datastore = datastore;
         this.notification = notification;
+    }
+
+    @Override
+    public void attachView(@NonNull MainFragmentView view) {
+        super.attachView(view);
+        Timber.d("%s attached.", getClass().getSimpleName());
     }
 
     @Override
@@ -44,9 +44,7 @@ public class MainFragmentPresenterImpl extends MvpNullObjectBasePresenter<MainFr
 
     private void subscribeToFeedItems() {
         Timber.d("Subscribe to feed items.");
-        subscription = RxFirebaseDatabase.observeChildEvent(databaseReference)
-                .map(feedItemMapper::map)
-                .filter(feedItem -> feedItem != null)
+        subscription = firebaseService.getFeedItems()
                 .subscribe(this::handleFeedItemResponse, this::handleFeedItemError);
     }
 
@@ -80,6 +78,7 @@ public class MainFragmentPresenterImpl extends MvpNullObjectBasePresenter<MainFr
 
     @Override
     public void detachView(boolean retainInstance) {
+        Timber.d("%s detached.", getClass().getSimpleName());
         super.detachView(retainInstance);
         unsubscribeFromFeedItems(retainInstance);
     }

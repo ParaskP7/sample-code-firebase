@@ -33,6 +33,8 @@ The below listed skills are the main focus:
 7. Tests
     1. [Espresso](https://google.github.io/android-testing-support-library/docs/espresso/) ```(Espresso to write concise, beautiful, and reliable Android UI tests)```
     2. [JUnit](https://github.com/junit-team/junit4) ```(A programmer-oriented testing framework for Java)```
+    3. [Mockito](https://github.com/mockito/mockito) ```(Most popular Mocking framework for unit tests written in Java)```
+    4. [AssertJ](https://github.com/joel-costigliola/assertj-core) ```(A library providing easy to use rich typed assertions)```
 
 # Setup
     

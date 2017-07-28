@@ -81,6 +81,9 @@ dependencies {
     })
 
     testImplementation deps.test.junit
+    testImplementation deps.test.jodaTime
+    testImplementation deps.test.assertJ
+    testImplementation deps.mock.mockito
 
     androidTestImplementation(deps.androidTest.espresso, {
         exclude group: 'com.android.support', module: 'support-annotations'

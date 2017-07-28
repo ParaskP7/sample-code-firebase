@@ -1,6 +1,5 @@
 package com.hubrickchallenge.android.tools.dagger.modules;
 
-import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.FirebaseDatabase;
 import com.hubrickchallenge.android.actions.AppNotificationActions;
 import com.hubrickchallenge.android.activity.main.presenter.MainFragmentPresenter;
@@ -8,10 +7,9 @@ import com.hubrickchallenge.android.activity.main.presenter.MainFragmentPresente
 import com.hubrickchallenge.android.activity.main.view.FeedItemAdapterImpl;
 import com.hubrickchallenge.android.activity.main.view.MainFragmentViewState;
 import com.hubrickchallenge.android.datastore.Datastore;
-import com.hubrickchallenge.android.model.FeedItem;
 import com.hubrickchallenge.android.model.mapper.FeedItemMapper;
-import com.hubrickchallenge.android.model.mapper.Mapper;
-import com.kelvinapps.rxfirebase.RxFirebaseChildEvent;
+import com.hubrickchallenge.android.service.FirebaseService;
+import com.hubrickchallenge.android.service.FirebaseServiceImpl;
 
 import dagger.Module;
 import dagger.Provides;
@@ -20,15 +18,14 @@ import dagger.Provides;
 public class MainFragmentModule {
 
     @Provides
-    Mapper<RxFirebaseChildEvent<DataSnapshot>, FeedItem> providesFeedItemMapper() {
-        return new FeedItemMapper();
+    FirebaseService providesFirebaseService() {
+        return new FirebaseServiceImpl(FirebaseDatabase.getInstance().getReference(), new FeedItemMapper());
     }
 
     @Provides
-    MainFragmentPresenter providesMainFragmentPresenter(Datastore datastore,
-                                                        Mapper<RxFirebaseChildEvent<DataSnapshot>, FeedItem> feedItemMapper,
+    MainFragmentPresenter providesMainFragmentPresenter(FirebaseService firebaseService, Datastore datastore,
                                                         AppNotificationActions notification) {
-        return new MainFragmentPresenterImpl(FirebaseDatabase.getInstance().getReference(), feedItemMapper, datastore, notification);
+        return new MainFragmentPresenterImpl(firebaseService, datastore, notification);
     }
 
     @Provides
