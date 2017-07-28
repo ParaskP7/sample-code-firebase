@@ -2,7 +2,7 @@ package com.hubrickchallenge.android.tools.dagger.components;
 
 import com.hubrickchallenge.android.App;
 
-public class ComponentFactory {
+public final class ComponentFactory {
 
     public static MainFragmentComponent getMainFragmentComponent() {
         return DaggerMainFragmentComponent.builder()

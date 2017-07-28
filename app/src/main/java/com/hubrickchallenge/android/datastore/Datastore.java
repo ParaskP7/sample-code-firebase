@@ -3,10 +3,10 @@ package com.hubrickchallenge.android.datastore;
 
 public class Datastore {
 
-    private DatastoreStoreActions datastoreStoreActions;
-    private DatastoreGetActions datastoreGetActions;
-    private DatastoreAddActions datastoreAddActions;
-    private DatastoreUpdateActions datastoreUpdateActions;
+    private final DatastoreStoreActions datastoreStoreActions;
+    private final DatastoreGetActions datastoreGetActions;
+    private final DatastoreAddActions datastoreAddActions;
+    private final DatastoreUpdateActions datastoreUpdateActions;
 
     public Datastore(DatastoreStoreActions datastoreStoreActions, DatastoreGetActions datastoreGetActions,
                      DatastoreAddActions datastoreAddActions, DatastoreUpdateActions datastoreUpdateActions) {

@@ -13,7 +13,7 @@ import timber.log.Timber;
 
 public class DatastoreGetActions implements GetActions {
 
-    private Realm realm;
+    private final Realm realm;
 
     public DatastoreGetActions(Realm realm) {
         this.realm = realm;

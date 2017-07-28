@@ -59,35 +59,35 @@ public class AppNotificationActions implements NotificationActions {
 
     @Override
     public void show() {
-        final NotificationManagerCompat notificationManagerCompat = NotificationManagerCompat.from(application);
+        NotificationManagerCompat notificationManagerCompat = NotificationManagerCompat.from(application);
         notificationManagerCompat.notify(DEFAULT_NOTIFICATION_ID,
                 getDefaultNotification(getContentPendingIntent(DEFAULT_NOTIFICATION_ID), getDeletedPendingIntent(DEFAULT_NOTIFICATION_ID),
-                        Collections.<NotificationCompat.Action>emptyList()));
+                        Collections.emptyList()));
     }
 
     @Nullable
-    PendingIntent getContentPendingIntent(final int notificationId) {
+    PendingIntent getContentPendingIntent(int notificationId) {
         return getPendingIntent(INTENT_ACTION_NOTIFICATION_CLICKED, notificationId);
     }
 
     @Nullable
-    PendingIntent getDeletedPendingIntent(final int notificationId) {
+    PendingIntent getDeletedPendingIntent(int notificationId) {
         return getPendingIntent(INTENT_ACTION_NOTIFICATION_CLEARED, notificationId);
     }
 
     @Nullable
-    private PendingIntent getPendingIntent(final String intentAction, final int notificationId) {
-        final Intent intent = new Intent(intentAction);
+    private PendingIntent getPendingIntent(String intentAction, int notificationId) {
+        Intent intent = new Intent(intentAction);
         intent.putExtra(INTENT_EXTRA_NOTIFICATION_ID, notificationId);
-        final int contentRequestCode = GeneralUtil.randomInt(0, Integer.MAX_VALUE - 1);
-        @Nullable final PendingIntent contentPendingIntent = PendingIntent.getBroadcast(application, contentRequestCode, intent,
+        int contentRequestCode = GeneralUtil.randomInt(0, Integer.MAX_VALUE - 1);
+        @Nullable PendingIntent contentPendingIntent = PendingIntent.getBroadcast(application, contentRequestCode, intent,
                 PendingIntent.FLAG_ONE_SHOT);
         return contentPendingIntent;
     }
 
     private Notification getDefaultNotification(@Nullable PendingIntent contentPendingIntent, @Nullable PendingIntent deletedPendingIntent,
-                                                final List<NotificationCompat.Action> notificationActions) {
-        final NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(application, DEFAULT_NOTIFICATION_CHANNEL_ID)
+                                                List<NotificationCompat.Action> notificationActions) {
+        NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(application, DEFAULT_NOTIFICATION_CHANNEL_ID)
                 .setContentTitle(defaultNotificationTitleText)
                 .setContentText(defaultNotificationContentText)
                 .setDefaults(NotificationCompat.PRIORITY_MAX)
@@ -96,7 +96,7 @@ public class AppNotificationActions implements NotificationActions {
                 .setDeleteIntent(deletedPendingIntent)
                 .setAutoCancel(true)
                 .setSmallIcon(R.mipmap.ic_launcher);
-        for (final NotificationCompat.Action notificationAction : notificationActions) {
+        for (NotificationCompat.Action notificationAction : notificationActions) {
             notificationBuilder.addAction(notificationAction);
         }
         return notificationBuilder.build();

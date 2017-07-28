@@ -18,9 +18,9 @@ public enum FeedItemType {
         return type;
     }
 
-    public static FeedItemType fromType(final String type) {
+    public static FeedItemType fromType(String type) {
         Timber.v("Fetching %s enum for type: %s", FeedItemType.class.getSimpleName(), type);
-        for (final FeedItemType feedItemType : FeedItemType.values()) {
+        for (FeedItemType feedItemType : FeedItemType.values()) {
             if (type.equals(feedItemType.getType())) {
                 return feedItemType;
             }

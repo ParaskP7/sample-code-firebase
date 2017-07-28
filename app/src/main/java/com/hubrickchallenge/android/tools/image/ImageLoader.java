@@ -8,7 +8,7 @@ import com.bumptech.glide.Glide;
 
 import timber.log.Timber;
 
-public class ImageLoader {
+public final class ImageLoader {
 
     public static void loadImage(String url, ImageView imageView) {
         Timber.d("Fetching image from url: %s", url);

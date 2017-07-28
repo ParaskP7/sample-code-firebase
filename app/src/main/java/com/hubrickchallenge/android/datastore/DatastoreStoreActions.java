@@ -9,8 +9,8 @@ import timber.log.Timber;
 
 public class DatastoreStoreActions implements StoreActions {
 
-    private DatastoreGetActions datastoreGetActions;
-    private DatastoreAddActions datastoreAddActions;
+    private final DatastoreGetActions datastoreGetActions;
+    private final DatastoreAddActions datastoreAddActions;
 
     public DatastoreStoreActions(DatastoreAddActions datastoreAddActions, DatastoreGetActions datastoreGetActions) {
         this.datastoreAddActions = datastoreAddActions;

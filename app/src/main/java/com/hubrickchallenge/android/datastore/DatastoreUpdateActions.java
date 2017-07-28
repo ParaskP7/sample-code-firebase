@@ -8,7 +8,7 @@ import timber.log.Timber;
 
 public class DatastoreUpdateActions implements UpdateActions {
 
-    private Realm realm;
+    private final Realm realm;
 
     public DatastoreUpdateActions(Realm realm) {
         this.realm = realm;

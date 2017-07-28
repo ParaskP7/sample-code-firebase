@@ -2,9 +2,8 @@ package com.hubrickchallenge.android.util;
 
 import java.util.Random;
 
-public class GeneralUtil {
+public final class GeneralUtil {
 
-    public static final String SPACE = " ";
     public static final int HASH_CODE = 31;
 
     private static final Random RANDOM = new Random();
@@ -22,7 +21,7 @@ public class GeneralUtil {
      * @return Integer between min and max, inclusive.
      * @see Random#nextInt(int)
      */
-    public static int randomInt(final int min, final int max) {
+    public static int randomInt(int min, int max) {
         return RANDOM.nextInt((max - min) + 1) + min;
     }
 
