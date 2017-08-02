@@ -51,10 +51,10 @@ ext.versions = [
         timber          : '4.5.1',
 
         // Image
-        glide           : '3.8.0',
+        glide           : '4.0.0',
 
         // Animation
-        lottie          : '2.1.0',
+        lottie          : '2.1.2',
 
         // Other
         jodaTime        : '2.9.9',
