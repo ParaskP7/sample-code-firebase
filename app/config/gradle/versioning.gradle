@@ -37,7 +37,7 @@ ext.versions = [
 
         // Important
         dagger          : '2.11',
-        butterKnife     : '8.7.0',
+        butterKnife     : '8.8.0',
 
         // ReactiveX
         rxAndroid       : '2.0.1',
@@ -70,7 +70,7 @@ ext.versions = [
         assertJ         : '3.8.0',
 
         // Robolectric
-        robolectric     : '3.4',
+        robolectric     : '3.4.2',
 
         // ANDROID TEST IMPLEMENTATION // **************************************************************************************************
 
