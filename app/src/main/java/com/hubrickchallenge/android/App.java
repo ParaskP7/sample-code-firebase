@@ -14,6 +14,8 @@ import com.hubrickchallenge.android.tools.dagger.components.DaggerApplicationCom
 import com.hubrickchallenge.android.tools.dagger.modules.ApplicationModule;
 import com.hubrickchallenge.android.tools.dagger.modules.DatastoreModule;
 
+import net.danlew.android.joda.JodaTimeAndroid;
+
 import javax.inject.Inject;
 
 import io.realm.Realm;
@@ -38,10 +40,15 @@ public class App extends MultiDexApplication {
     @Override
     public void onCreate() {
         super.onCreate();
+        initJodaTime();
         initTimber();
         initDagger();
         initRealm();
         Timber.i("Firebase application created!");
+    }
+
+    private void initJodaTime() {
+        JodaTimeAndroid.init(this);
     }
 
     private void initTimber() {
