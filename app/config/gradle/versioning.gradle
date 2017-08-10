@@ -25,7 +25,7 @@ ext.versions = [
         // IMPLEMENTATION // ***************************************************************************************************************
 
         // Android
-        supportLibrary  : '26.0.0',
+        supportLibrary  : '26.0.1',
         constraintLayout: '1.0.2',
         multiDex        : '1.0.2',
 
